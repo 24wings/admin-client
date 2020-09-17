@@ -1,0 +1,55 @@
+<!-- {{ data | json }} -->
+<!-- {{ config | json }} -->
+<page-header-wrapper [title]="title" [action]="action">
+  <ng-template #title>
+    {{ config.title }}
+    <!-- <span class="text-sm text-grey-dark">
+      <nz-divider nzType="vertical"></nz-divider>
+    </span> -->
+  </ng-template>
+  <ng-template #action>
+    <div style="display: flex; justify-content: flex-end">
+      <button nz-button nzType="primary" (click)="selectedRecord = {}"><i nz-icon nzType="plus"></i> {{ '新增' }}</button>
+      <!-- <button nzType="danger" nz-button (click)="deleteLanguage($event)">{{l('Remove')}}</button> -->
+    </div>
+  </ng-template>
+  <nz-card>
+    <query-toolbar
+      *ngIf="config.queryToolbar"
+      [config]="config.queryToolbar"
+      (searchResult)="data = $event.items; total = $event.total"
+    ></query-toolbar>
+
+    <nz-table #basicTable nzShowSizeChanger [nzTotal]="total" [nzFrontPagination]="false" [nzData]="data">
+      <thead>
+        <tr>
+          <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+
+          <th *ngFor="let column of config.columns">{{ column.label }}</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td
+            [nzChecked]="setOfCheckedId.has(item.id)"
+            [nzDisabled]="item.disabled"
+            (nzCheckedChange)="onItemChecked(item.id, $event)"
+          ></td>
+          <td *ngFor="let column of config.columns"><dynamic-component [config]="column" [data]="item"></dynamic-component></td>
+          <td>
+            <a (click)="selectedRecord = item">编辑</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <meta-editor
+      [config]="config.editor"
+      (onclose)="selectedRecord = null"
+      [data]="selectedRecord || {}"
+      *ngIf="selectedRecord"
+    ></meta-editor>
+  </nz-card>
+</page-header-wrapper>

@@ -1,0 +1,47 @@
+{
+    "app": {
+      "name": "Ng Alain Pro",
+      "description": "Ng-zorro admin panel front-end framework"
+    },
+    "user": {
+      "name": "Admin",
+      "avatar": "./assets/tmp/img/avatar.jpg",
+      "email": "cipchk@qq.com"
+    },
+    "menu": [
+      {
+        "text": "主导航",
+        "i18n": "menu.main",
+        "group": true,
+        "hideInBreadcrumb": true,
+        "children": [
+          {
+            "text": "仪表盘",
+            "i18n": "menu.dashboard",
+            "icon": "anticon anticon-dashboard",
+            "link": "/dashboard"
+          },
+          {
+            "text":"动态页面",
+            "i18n":"动态页面",
+            "icon": "anticon anticon-dashboard",
+            "link":"/developer/dynamic/BasicUser"
+          },
+          {
+            "text":"基础查询表格",
+            "i18n":"基础查询表格",
+            "icon": "anticon anticon-dashboard",
+            "link":"/developer/dynamic/TableQuerybar"
+          },
+          {
+            "text": "快捷菜单",
+            "i18n": "menu.shortcut",
+            "icon": "anticon anticon-rocket",
+            "shortcutRoot": true,
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+  
