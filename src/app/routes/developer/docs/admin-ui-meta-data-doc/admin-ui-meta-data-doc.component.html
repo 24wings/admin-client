@@ -1,0 +1,15 @@
+<page-header-wrapper title="前端ui元数据文档">
+    <nz-card>
+    <div class="mb-md">
+        <input nz-input [(ngModel)]="keyword" name="name" nzPlaceHolder="请输入组件关键字" style="width: 100px;" class="mr-sm" />
+        <button nz-button (click)="search()" [nzType]="'primary'">搜索</button>
+        <button nz-button (click)=" keyword=null;search()">重置</button>
+      </div>
+    <st [data]="displayDataList" [columns]="columns" [page]="{pageSize:1000}" [expand]="expand" expandRowByClick expandAccordion>
+
+        <ng-template #expand let-item let-index="index" let-column="column">
+          <st [data]="item.propertys" [columns]="subTableColumns"></st>
+          </ng-template>
+    </st>
+</nz-card>
+</page-header-wrapper>
