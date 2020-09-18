@@ -51,5 +51,6 @@
       [data]="selectedRecord || {}"
       *ngIf="selectedRecord"
     ></meta-editor>
+    <data-manager #dataManager [config]="config.dataManager"></data-manager>
   </nz-card>
 </page-header-wrapper>

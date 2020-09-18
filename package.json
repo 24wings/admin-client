@@ -24,7 +24,8 @@
     "test-coverage": "ng test --code-coverage --watch=false",
     "color-less": "node scripts/color-less.js",
     "theme": "node scripts/theme.js",
-    "icon": "ng g ng-alain:plugin icon"
+    "icon": "ng g ng-alain:plugin icon",
+    "publish": "ng build --prod --base-href \"https://24wings.github.io/admin-client/\""
   },
   "dependencies": {
     "@agm/core": "^1.1.0",
@@ -56,12 +57,15 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@swimlane/ngx-charts": "^14.0.0",
     "ajv": "^6.12.2",
+    "ang-jsoneditor": "^1.10.1",
     "angular-baidu-maps": "^9.1.0",
     "element-closest": "^3.0.2",
     "file-saver": "^2.0.2",
     "js-base64": "^2.5.2",
+    "loadsh": "^0.0.4",
     "masonry-layout": "^4.2.2",
     "ng-zorro-antd": "^9.1.2",
+    "ng2-json-editor": "^0.25.19",
     "ngx-image-gallery": "^2.0.4",
     "ngx-markdown": "^10.1.1",
     "ngx-trend": "^5.0.1",
@@ -123,8 +127,7 @@
     "xlsx": "^0.16.1"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "private": true,
   "theme": {

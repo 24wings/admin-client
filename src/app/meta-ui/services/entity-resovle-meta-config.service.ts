@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+
 import { DataGridConfig } from '../core/widgets/data-grid-config';
 import { ColumnsSymbol } from '../decorators/columns/column';
 import { getFields } from '../decorators/fields/field';
 import { DataGridSymbol } from '../decorators/widgets/data-grid';
+import { getDataManager } from '../decorators/widgets/data-manager';
 import { getEditor } from '../decorators/widgets/editor';
 import { getToolbar } from '../decorators/widgets/query-toolbar';
 
@@ -25,6 +27,13 @@ export class EntityResolveMetaConfigService {
       config.editor = getEditor(config.editorEntity);
       config.editor.fields = getFields(config.editorEntity);
     }
+    config.dataManager = getDataManager(entity);
+    if(config.dataManager){
+      config.dataManager.columns = columns;
+      config.dataManager.fields = config.editor ? config.editor.fields : [];
+    }
+ 
+    debugger;
     return config;
   }
 

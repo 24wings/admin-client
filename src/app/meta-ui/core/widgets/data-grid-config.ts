@@ -1,12 +1,14 @@
 import { BasicColumn } from '../basic-column';
 import { BasicDynamicComponentConfig } from '../basic-dynamic-component.config';
 import { ColumnDateConfig } from '../columns/column-date-config.component';
+import { DataManagerConfig } from '../data/data-manager-config';
 import { EditorConfig } from './editor-config';
 import { QueryToolbarConfig } from './query-toolbar-config';
 
 export class DataGridConfig extends BasicDynamicComponentConfig {
   title?: string;
   columns?: (BasicColumn | ColumnDateConfig)[];
+  dataManager?: DataManagerConfig;
   loadUrl?: string;
   queryToolbar?: QueryToolbarConfig;
   queryEntity?: any;

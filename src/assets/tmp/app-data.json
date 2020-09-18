@@ -59,7 +59,7 @@
                 "i18n": "前端装饰器文档",
                 "icon": "anticon anticon-rocket",
                 "shortcutRoot": true,
-                "link":"/developer/doc/admin-ui-meta-data-doc",
+                "link":"/developer/doc/admin-ui-decorator-doc",
                 "children": []
               },
               {

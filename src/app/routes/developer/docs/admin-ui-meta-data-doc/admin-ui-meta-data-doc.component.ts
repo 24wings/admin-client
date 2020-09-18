@@ -12,6 +12,7 @@ interface ComDef{
 @Component({
   selector: 'admin-ui-meta-data-doc',
   templateUrl: './admin-ui-meta-data-doc.component.html',
+  styleUrls:['./admin-ui-meta-data-doc.component.css']
 })
 export class AdminUiMetaDataDocComponent {
     keyword = '';
