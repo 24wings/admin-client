@@ -12,4 +12,5 @@ export abstract class BasicField extends BasicDynamicComponentConfig {
   required?: boolean;
   value?: any;
   isPrimaryKey?: boolean;
+  span?:number;
 }

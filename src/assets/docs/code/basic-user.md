@@ -1,17 +1,35 @@
 ```typescript
 
-@DataGrid({ title: '用户中心' })
-export class BasicUser {
-  @Column('id')
-  id: number;
-  @Column('姓名')
-  name: string;
-  @Column('生日', { format: 'yyyy-MM-dd HH:mm:ss' })
-  birthDate: Date;
-  @Column('是否已成年')
-  over18: boolean;
-  @Column('年龄')
-  age: number;
+@QueryToolbar({})
+@DataManager({table: 'basic-data-grid', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true, adapter: 'local'})
+
+export class BasicDataGridQueryToolbar{
+    @Field('姓名', {span: 12, condition: 'like'})
+    name: string;
+    @Field('开始日期', {span: 12})
+    startDate: Date;
+    @Field('截止日期', {span: 12})
+    endDate: Date;
+    
+}
+
+@Editor({})
+@DataGrid({title: '基本数据表格@DataGrid', queryEntity: BasicDataGridQueryToolbar})
+@DataManager({table: 'basic-data-grid', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true, adapter: 'local'})
+export class BasicDataGrid{
+    @Field('id', {isPrimaryKey: true, readonly: true})
+    @Column('id', {isPrimaryKey: true})
+    id: number;
+    @Field('姓名', {})
+    @Column('姓名', {})
+    name: string;
+    @Field('年龄', {})
+    @Column('年龄', {})
+    age: number;
+    @Field('生日', {})
+    @Column('生日', {})
+    birthDate: Date;
+
 }
 
 ```

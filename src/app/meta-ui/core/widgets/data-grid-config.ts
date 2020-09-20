@@ -9,9 +9,10 @@ export class DataGridConfig extends BasicDynamicComponentConfig {
   title?: string;
   columns?: (BasicColumn | ColumnDateConfig)[];
   dataManager?: DataManagerConfig;
-  loadUrl?: string;
   queryToolbar?: QueryToolbarConfig;
   queryEntity?: any;
   editor?: EditorConfig;
   editorEntity?: any;
+  pageSize?: number;
+  selection?: boolean;
 }

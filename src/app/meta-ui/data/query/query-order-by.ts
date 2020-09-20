@@ -1,4 +1,4 @@
 export class QueryOrderBy{
-    key: string;
-    sort: 'desc'|'asc';
+    key?: string;
+    sort?: 'ascend'|'descend';
 }

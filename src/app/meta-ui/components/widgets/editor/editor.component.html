@@ -1,6 +1,6 @@
-{{ config | json }}
 
 <nz-modal
+[nzTitle]="title"
   [nzVisible]="visible"
   [nzContent]="modalContent"
   [nzClosable]="true"
@@ -15,4 +15,6 @@
       <dynamic-component [form]="form" [config]="field" [data]="data" *ngIf="!field.isPrimaryKey && !field.readonly"></dynamic-component>
     </ng-container>
   </form>
+
 </ng-template>
+<data-manager [config]="config.dataManager"  #dataManager ></data-manager>

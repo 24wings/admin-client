@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AppSettingsService } from 'src/app/app-settings.service';
 import { ICONS } from '../../../style-icons';
 import { ICONS_AUTO } from '../../../style-icons-auto';
 import { I18NService } from '../i18n/i18n.service';
@@ -25,6 +26,7 @@ export class StartupService {
     private aclService: ACLService,
     private titleService: TitleService,
     private httpClient: HttpClient,
+    private appSettingsService:AppSettingsService
   ) {
     iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
@@ -43,7 +45,7 @@ export class StartupService {
           }),
         )
         .subscribe(
-          ([langData, appData]) => {
+          async ([langData, appData]) => {
             // setting language data
             this.translate.setTranslation(this.i18n.defaultLang, langData);
             this.translate.setDefaultLang(this.i18n.defaultLang);
@@ -61,6 +63,7 @@ export class StartupService {
             // 设置页面标题的后缀
             this.titleService.default = '';
             this.titleService.suffix = res.app.name;
+            await this.initLocalDatabase(); 
           },
           () => {},
           () => {
@@ -68,5 +71,8 @@ export class StartupService {
           },
         );
     });
+  }
+  initLocalDatabase(){
+  return this.appSettingsService.initDatabase();
   }
 }

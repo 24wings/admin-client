@@ -3,12 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BasicField } from '../basic-field';
 @Injectable()
 export class FormGroupGenerateService {
-  toFormGroup(fields: BasicField[]) {
+  toFormGroup(fields: BasicField[], data: any= {}) {
     const group: any = {};
-    fields.forEach((question) => {
-      group[question.key] = question.required
-        ? new FormControl(question.value || '', Validators.required)
-        : new FormControl(question.value || '');
+    fields.forEach((field) => {
+      group[field.key] = field.required
+        ? new FormControl( data[field.key] || '', Validators.required)
+        : new FormControl(data[field.key] || '');
     });
     return new FormGroup(group);
   }

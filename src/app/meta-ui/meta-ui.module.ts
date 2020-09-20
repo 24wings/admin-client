@@ -21,6 +21,7 @@ import { DynamicDirective } from './directives/dynamic.directive';
 import { DynamicDtoPageComponent } from './pages/dynamic-dto-page/dynamic-dto-page.component';
 import { ComponentRegisterFactory } from './services/component-register-factory';
 import { ComponentRegisterProvider } from './services/component-register-provicer';
+import { DataQueryService } from './services/data-query.service';
 import { EntityResolveMetaConfigService } from './services/entity-resovle-meta-config.service';
 import { IndexdbService } from './services/indexdb.service';
 import { LocalDbService } from './services/local-db.server';
@@ -62,7 +63,8 @@ const COMPONENTS = [
       ValidService,
        FormGroupGenerateService,
     IndexdbService,
-    LocalDbService
+    LocalDbService,
+    DataQueryService
     ],
 })
 export class MetaUiModule {}

@@ -87,6 +87,7 @@ const APPINIT_PROVIDES = [
     deps: [StartupService],
     multi: true,
   },
+  AppSettingsService
 ];
 // #endregion
 
@@ -97,6 +98,7 @@ import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
+import { AppSettingsService } from './app-settings.service';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'loadsh';
+import { AppSettingsService } from 'src/app/app-settings.service';
 import { DataManagerConfig } from '../core/data/data-manager-config';
 import { BasicDataManager } from '../data/basic-data-manager';
 @Injectable()
 export class IndexdbService{
-    createDatabase(databaseName: string): Promise<IDBDatabase>{
+  constructor(private appSettingsService: AppSettingsService){}
+    createDatabase(databaseName: string, version): Promise<IDBDatabase>{
       return new Promise(resolve => {
         let db;
-        const request =  indexedDB.open(databaseName,Date.now());
+        const request =  indexedDB.open(databaseName, version);
         request.onerror = (event) => {
           console.error('数据库打开错误');
           resolve(null);

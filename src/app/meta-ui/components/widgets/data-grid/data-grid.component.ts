@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import * as _ from 'loadsh';
+import { BasicColumn } from 'src/app/meta-ui/core/basic-column';
 import { DataGridConfig } from 'src/app/meta-ui/core/widgets/data-grid-config';
 import { DataManagerComponent } from '../../data/data-manager/data-manager.component';
-
 @Component({ selector: 'data-grid', templateUrl: './data-grid.component.html' })
 export class DataGridComponent implements OnInit, AfterViewInit{
   constructor(private httpClient: HttpClient) {}
@@ -15,14 +16,28 @@ export class DataGridComponent implements OnInit, AfterViewInit{
   indeterminate = false;
   setOfCheckedId = new Set<number>();
   total = 0;
+  editorMode: 'insert'|'update';
+  sortByField?: string;
+  orderBy: 'ascend'|'descend';
+  pageIndex= 1;
+ 
+  sortBy(column){
+      this.sortByField = column.key;
+      this.orderBy = column.sortOrder;
+      this.refresh();
+       
+  }
  async  ngOnInit(){
+   if (!this.config.selection === false ){
+     this.config.selection = true;
+   }
+   this.config.pageSize = this.config.pageSize || 10;
+
 
 
   }
   async ngAfterViewInit(){
-    const result = await this.dataManager.load({});
-    this.data = result.data.items;
-    this.total = result.data.total;
+      await this.refresh();
   }
   onAllChecked(checked: boolean): void {
     this.data.filter(({ disabled }) => !disabled).forEach(({ id }) => this.updateCheckedSet(id, checked));
@@ -38,6 +53,19 @@ export class DataGridComponent implements OnInit, AfterViewInit{
     } else {
       this.setOfCheckedId.delete(id);
     }
+  }
+ async  refresh(){
+   const orderBy = {
+     key: this.sortByField,
+   sort: this.orderBy
+  };
+   const result = await this.dataManager.load({orderBy, take: this.config.pageSize, skip: (this.pageIndex - 1) * this.config.pageSize});
+   this.data = result.data.items;
+   this.total = result.data.total;
+  }
+ async delete(data){
+   await this.dataManager.remove(data);
+   await  this.refresh();
   }
 
   onCurrentPageDataChange(listOfCurrentPageData: any[]): void {

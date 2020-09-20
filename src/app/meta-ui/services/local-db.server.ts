@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { resolve } from 'dns';
+import { AppSettingsService } from 'src/app/app-settings.service';
 import { DataManagerConfig } from '../core/data/data-manager-config';
 import { BasicDataManager } from '../data/basic-data-manager';
 import { CommonPagedResponse } from '../data/http/common-paged-response';
@@ -11,20 +12,22 @@ import { IndexdbService } from './indexdb.service';
 export class LocalDbService{
     db: IDBDatabase;
     private databaseName = 'local';
-    constructor(private indexDbService: IndexdbService){
+    constructor(
+      private indexDbService: IndexdbService,
+      private appSettingService: AppSettingsService){
     }
     
     async createTable(dataManager: DataManagerConfig){
-      const db = await this.indexDbService.createDatabase(this.databaseName);
+      const db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
       this.indexDbService.createTable(db, dataManager);
     }
     
 
   async  load(table, queryObject: QueryObject): Promise<CommonPagedResponse>{
-        this.db = await this.indexDbService.createDatabase(this.databaseName);
+        this.db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
         return new Promise(resolve => {
         const transaction = this.db.transaction([table]);
-        const objectStore = transaction.objectStore('person');
+        const objectStore = transaction.objectStore(table);
         const request = objectStore.getAll();
      
         request.onerror = (event) => {
@@ -47,7 +50,8 @@ export class LocalDbService{
       
     }
   async  insert(table, data: any|any[]): Promise<CommonResponse>{
-        this.db = await this.indexDbService.createDatabase(this.databaseName);
+    debugger;
+        this.db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
         return new Promise(resolve => {
 
         const request = this.db.transaction([table], 'readwrite')
@@ -72,7 +76,7 @@ export class LocalDbService{
 
     }
     async update(table, data: any): Promise<CommonResponse>{
-        const db = await this.indexDbService.createDatabase(this.databaseName);
+        const db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
         return new Promise(resolve => {
             const request =  db.transaction([table], 'readwrite')
             .objectStore(table)
@@ -91,7 +95,7 @@ export class LocalDbService{
        
     }
    async remove(table, data: any): Promise<CommonResponse>{
-        const db = await this.indexDbService.createDatabase(this.databaseName);
+        const db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
         return new Promise(resolve => {
             const request = db.transaction([table], 'readwrite')
             .objectStore(table)

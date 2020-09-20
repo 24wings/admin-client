@@ -1,6 +1,7 @@
 import { Column } from 'src/app/meta-ui/decorators/columns/column';
 import { Field } from 'src/app/meta-ui/decorators/fields/field';
 import { DataGrid } from 'src/app/meta-ui/decorators/widgets/data-grid';
+import { DataManager } from 'src/app/meta-ui/decorators/widgets/data-manager';
 import { Editor } from 'src/app/meta-ui/decorators/widgets/editor';
 import { QueryToolbar } from 'src/app/meta-ui/decorators/widgets/query-toolbar';
 
@@ -12,7 +13,8 @@ export class TableQueryToolbarEntity {
   age: number;
 }
 
-@Editor({ loadUrl: 'assets/data/load-user-detail.json', submitUrl: 'asset/data/update-use.json' })
+@Editor({ editTitle:'编辑' })
+@DataManager({autoLoad: true, autoInsert: true, autoUpdate: true, autoRemove: true, adapter: 'local'})
 @DataGrid({ title: '基础查询表格', queryEntity: TableQueryToolbarEntity, editorEntity: TableQuerybar })
 export class TableQuerybar {
   @Field('id', { readonly: true, isPrimaryKey: true })

@@ -6,4 +6,6 @@ export abstract class BasicColumn extends BasicDynamicComponentConfig {
   key?: string;
   label?: string;
   isPrimaryKey?: boolean;
+  sortOrder?:'asc'|'desc';
+  sortFn?:any;
 }

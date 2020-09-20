@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { ComponentAlias } from '../component-alais';
 
 import { DataGridConfig } from '../core/widgets/data-grid-config';
 import { ColumnsSymbol } from '../decorators/columns/column';
 import { getFields } from '../decorators/fields/field';
 import { DataGridSymbol } from '../decorators/widgets/data-grid';
 import { getDataManager } from '../decorators/widgets/data-manager';
-import { getEditor } from '../decorators/widgets/editor';
+import { EditorSymbol, getEditor } from '../decorators/widgets/editor';
 import { getToolbar } from '../decorators/widgets/query-toolbar';
 
 /**
@@ -14,28 +15,46 @@ import { getToolbar } from '../decorators/widgets/query-toolbar';
 @Injectable()
 export class EntityResolveMetaConfigService {
   resolvelEntity(entity: new () => any) {
-    const columns = Reflect.getMetadata(ColumnsSymbol, entity.prototype);
-    const config = Reflect.getMetadata(DataGridSymbol, entity) as DataGridConfig;
-    config.columns = columns;
-    if (config.queryEntity) {
-      const queryToolbar = getToolbar(config.queryEntity);
-      queryToolbar.queryFields = getFields(config.queryEntity);
-
-      config.queryToolbar = queryToolbar;
-    }
-    if (config.editorEntity) {
-      config.editor = getEditor(config.editorEntity);
-      config.editor.fields = getFields(config.editorEntity);
-    }
+    const columns = Reflect.getMetadata(ColumnsSymbol, entity.prototype || entity);
+    const config = Reflect.getMetadata(DataGridSymbol, entity) as DataGridConfig || Reflect.getMetadata(EditorSymbol, entity);
     config.dataManager = getDataManager(entity);
-    if(config.dataManager){
+
+    config.columns = columns;
+    // if (config.queryEntity) {
+    const queryToolbar = getToolbar(config.queryEntity  || entity);
+    if (queryToolbar){
+      queryToolbar.queryFields = getFields(config.queryEntity || entity);
+      queryToolbar.dataManager = config.dataManager;
+  
+    }
+    
+    config.queryToolbar = queryToolbar;
+    // }
+    if (config.componentAlias !== ComponentAlias.Editor){
+      config.editor = this.resolveEditor(config.editorEntity || entity);
+
+    }else{
+      config.fields = getFields(config.queryEntity || entity);
+    }
+
+
+    if (config.dataManager){
       config.dataManager.columns = columns;
-      config.dataManager.fields = config.editor ? config.editor.fields : [];
+      config.dataManager.fields = config.editor ? config.editor.fields : getFields(config.queryEntity || entity);
     }
  
-    debugger;
     return config;
   }
 
   resolveToolbar(entity) {}
+
+  resolveEditor(entity){
+    const editor = getEditor(entity);
+    if (editor){
+        editor.fields = getFields(entity);
+        editor.dataManager = getDataManager(entity);
+    }
+    return editor;
+  }
+  
 }

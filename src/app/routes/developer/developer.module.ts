@@ -12,7 +12,7 @@ import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
 const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent];
 
 @NgModule({
-  imports: [SharedModule, MetaUiModule, DeveloperRoutingModule, MarkdownModule.forRoot( ),],
+  imports: [SharedModule, MetaUiModule, DeveloperRoutingModule, MarkdownModule.forRoot( )],
   declarations: [...COMPONENTS],
   entryComponents: [...COMPONENTS],
 })

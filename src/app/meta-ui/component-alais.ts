@@ -9,4 +9,5 @@ export enum ComponentAlias {
   FieldNumber = 'FieldNumber',
   FieldDate = 'FieldDate',
   FieldBoolean = 'FieldBoolean',
-}
+  Editor = "Editor"
+} 
