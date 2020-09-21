@@ -1,6 +1,5 @@
-
-
 ```typescript
+
 @QueryToolbar({})
 @DataManager({table: 'basic-data-grid', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true, adapter: 'local'})
 
@@ -14,8 +13,8 @@ export class BasicDataGridQueryToolbar{
     
 }
 
-@Editor({editTitle: '编辑数据'})
-@DataGrid({title: '基本数据表格', queryEntity: BasicDataGridQueryToolbar})
+@Editor({})
+@DataGrid({title: '基本数据表格@DataGrid', queryEntity: BasicDataGridQueryToolbar})
 @DataManager({table: 'basic-data-grid', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true, adapter: 'local'})
 export class BasicDataGrid{
     @Field('id', {isPrimaryKey: true, readonly: true})
@@ -32,4 +31,5 @@ export class BasicDataGrid{
     birthDate: Date;
 
 }
+
 ```

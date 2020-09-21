@@ -1,0 +1,23 @@
+{
+    "databaseName":"local",
+    "version":2,
+    "tables":[
+        {"name":"basic-data-grid", "keyPath":"id","autoIncrement":true,
+        "columns":[ 
+            {"key":"name","unique":false},
+            {"key":"age","unique":false},
+            {"key":"birthDate","unique":false}
+            
+        ]
+        },
+        {"name":"data-grid-case", "keyPath":"id","autoIncrement":true,
+            "columns":[ 
+                {"key":"name","unique":false},
+                {"key":"age","unique":false},
+                {"key":"birthDate","unique":false}
+                
+            ]
+            }
+        
+    ]
+}

@@ -1,79 +1,108 @@
 {
-    "app": {
-      "name": "Ng Alain Pro",
-      "description": "Ng-zorro admin panel front-end framework"
-    },
-    "user": {
-      "name": "Admin",
-      "avatar": "./assets/tmp/img/avatar.jpg",
-      "email": "cipchk@qq.com"
-    },
-    "menu": [
-      {
-        "text": "主导航",
-        "i18n": "menu.main",
-        "group": true,
-        "hideInBreadcrumb": true,
-        "children": [
-          {
-            "text": "仪表盘",
-            "i18n": "menu.dashboard",
+  "app": {
+    "name": "Ng Alain Pro",
+    "description": "Ng-zorro admin panel front-end framework"
+  },
+  "user": {
+    "name": "Admin",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "cipchk@qq.com"
+  },
+  "menu": [
+    {
+      "text": "主导航",
+      "i18n": "menu.main",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "仪表盘",
+          "i18n": "menu.dashboard",
+          "icon": "anticon anticon-dashboard",
+          "link": "/dashboard"
+        },
+        {
+          "text": "示例页面",
+          "i18n": "示例页面",
+          "icon": "anticon anticon-dashboard",
+          "children":[{
+            "text": "基础表格",
+            "i18n": "基础表格",
             "icon": "anticon anticon-dashboard",
-            "link": "/dashboard"
+            "link": "/developer/dynamic/BasicDataGrid"
           },
           {
-            "text":"动态页面",
-            "i18n":"动态页面",
+            "text": "表格案例",
+            "i18n": "基础案例",
             "icon": "anticon anticon-dashboard",
-            "link":"/developer/dynamic/BasicUser"
+            "link": "/developer/dynamic/DataGridCase"
           },
           {
-            "text":"基础查询表格",
-            "i18n":"基础查询表格",
+            "text": "基础表单",
+            "i18n": "基础表单",
             "icon": "anticon anticon-dashboard",
-            "link":"/developer/dynamic/TableQuerybar"
-          },
-          {
-            "text": "快捷菜单",
-            "i18n": "menu.shortcut",
-            "icon": "anticon anticon-rocket",
-            "shortcutRoot": true,
-            "children": []
-          },
-          {
-            "text": "开发者文档",
-            "i18n": "开发者文档",
-            "icon": "anticon anticon-rocket",
-            "shortcutRoot": true,
-            "children": [
-              {
-                "text": "前端元数据定义文档",
-                "i18n": "前端元数据定义文档",
-                "icon": "anticon anticon-rocket",
-                "shortcutRoot": true,
-                "link":"/developer/doc/admin-ui-meta-data-doc",
-                "children": []
-              },
-              {
-                "text": "前端装饰器文档",
-                "i18n": "前端装饰器文档",
-                "icon": "anticon anticon-rocket",
-                "shortcutRoot": true,
-                "link":"/developer/doc/admin-ui-meta-data-doc",
-                "children": []
-              },
-              {
-                "text": "前端开发文档",
-                "i18n": "前端开发文档",
-                "icon": "anticon anticon-rocket",
-                "shortcutRoot": true,
-                "link":"/developer/doc/admin-ui-meta-data-doc",
-                "children": []
-              }
-            ]
+            "link": "/developer/dynamic/BasicEditorCase"
           }
-        ]
-      }
-    ]
-  }
-  
+
+          ]
+        },
+        {
+          "text": "基础查询表格",
+          "i18n": "基础查询表格",
+          "icon": "anticon anticon-dashboard",
+          "link": "/developer/dynamic/TableQuerybar"
+        },
+        {
+          "text": "快捷菜单",
+          "i18n": "menu.shortcut",
+          "icon": "anticon anticon-rocket",
+          "shortcutRoot": true,
+          "children": []
+        },
+        {
+          "text": "开发者文档",
+          "i18n": "开发者文档",
+          "icon": "anticon anticon-rocket",
+          "shortcutRoot": true,
+          "children": [
+            {
+              "text": "前端元数据定义文档",
+              "i18n": "前端元数据定义文档",
+              "icon": "anticon anticon-rocket",
+              "shortcutRoot": true,
+              "link": "/developer/doc/admin-ui-meta-data-doc"
+            },
+            {
+              "text": "前端装饰器文档",
+              "i18n": "前端装饰器文档",
+              "icon": "anticon anticon-rocket",
+              "shortcutRoot": true,
+              "children": [
+                {
+                  "text": "使用示例",
+                  "i18n": "使用示例",
+                  "icon": "anticon anticon-rocket",
+                  "link": "/developer/doc/admin-ui-decorator-doc"
+                },
+                {
+                  "text": "TreeView",
+                  "i18n": "TreeView",
+                  "icon": "anticon anticon-rocket",
+                  "link": "/developer/doc/admin-ui-decorator-doc/tree-view-doc"
+                }
+              ]
+            },
+            {
+              "text": "前端开发文档",
+              "i18n": "前端开发文档",
+              "icon": "anticon anticon-rocket",
+              "shortcutRoot": true,
+              "link": "/developer/doc/admin-ui-meta-data-doc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
