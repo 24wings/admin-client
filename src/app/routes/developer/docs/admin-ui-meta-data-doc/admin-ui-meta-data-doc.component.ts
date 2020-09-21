@@ -12,7 +12,7 @@ interface ComDef{
 @Component({
   selector: 'admin-ui-meta-data-doc',
   templateUrl: './admin-ui-meta-data-doc.component.html',
-  styleUrls:['./admin-ui-meta-data-doc.component.css']
+  styleUrls: ['./admin-ui-meta-data-doc.component.css']
 })
 export class AdminUiMetaDataDocComponent {
     keyword = '';
@@ -31,23 +31,25 @@ export class AdminUiMetaDataDocComponent {
         {key: 'columns', type: 'BasicColumn[]', summary: '表格列', required: true},
         {key: 'loadUrl', type: 'string', summary: '数据加载Url'},
         {key: 'queryToolbar', type: 'QueryToolbarConfig', summary: '查询工具条'},
-        {key: 'editor', type: 'EditorConfig', summary: '表单'}
+        {key: 'editor', type: 'EditorConfig', summary: '表单'},
+        {key: 'dataManager', type: 'BasicDataManager', summary: '数据源'}
       ]},
       {
         
       component: 'EditorConfig', summary: '表单', type: 'Editor', 
       propertys: [
         {key: 'componentAlias', summary: '组件别名', type: '常量Editor', required: true},
-        {key: 'fields', type: 'BasicField[]', summary: '表单字段'},
+        {key: 'fields', type: 'BasicFieldConfig[]', summary: '表单字段'},
         {key: 'insertUrl', type: 'string', summary: '新增Url'},
-        {key: 'loadUrl', type: 'string', summary: '加载详情Url'}
+        {key: 'loadUrl', type: 'string', summary: '加载详情Url'},
+        {key: 'dataManager', type: 'BasicDataManager', summary: '数据源'}
       ]},
      
       {component: 'QueryToolbarConfig', summary: '查询工具条', type: 'QueryToolbarConfig', 
       propertys: [
         {key: 'componentAlias', summary: '组件别名', type: '常量QueryToolbar', required: true},
         {key: 'loadUrl', type: 'string', summary: '数据加载Url'},
-        {key: 'queryFields', type: 'BasicField[]', summary: '查询字段'}
+        {key: 'queryFields', type: 'BasicFieldConfig[]', summary: '查询字段'}
       ]},
       {component: 'BasicColumn', summary: '表格列', type: 'BasicColumnConfig', 
       propertys: [
@@ -57,7 +59,7 @@ export class AdminUiMetaDataDocComponent {
         {key: 'isPrimaryKey', type: 'boolean', summary: '是否主键'},
         
       ]},
-      {component: 'BasicField', summary: '表单字段', type: 'BasicFieldConfig', 
+      {component: 'BasicFieldConfig', summary: '表单字段', type: 'BasicFieldConfig', 
       propertys: [
         {key: 'componentAlias', summary: '组件别名', type: 'FieldString|FieldDate|FieldBoolean|FieldNumber', required: true},
         {key: 'key', type: 'string', summary: '字段名', required: true},
@@ -69,6 +71,34 @@ export class AdminUiMetaDataDocComponent {
         {key: 'isPrimaryKey', type: 'boolean' , summary: '是否主键'}
         
       ]},
+      {
+        component: 'DataManager',
+        summary: '数据源',
+        type: 'DataManager',
+    
+        propertys: [
+          {key: 'adaptor',  type: 'boolean', summary: '适配器', required: true},
+          {key: 'autoLoad',  type: 'boolean', summary: '自动查询'},
+          {key: 'autoInsert',  type: 'boolean', summary: '自动新增'},
+          {key: 'autoUpdate', type: 'boolean', summary: '自动更新'},
+          {key: 'autoRemove', type: 'boolean', summary: '自动删除'},
+          {key: 'loadUrl', type: 'string', summary: '加载数据url'},
+          {key: 'insertUrl', type: 'string', summary: '新增数据url'},
+          {key: 'updateUrl', type: 'string', summary: '更新url'},
+          {key: 'removeUrl', type: 'string', summary: '移除url'},
+        ]
+      },
+      {
+        component: 'QueryObject',
+        summary: '集成查询对象',
+        type: 'QueryObject',
+        propertys: [
+          {key: 'queryConditions', type: 'QueryCondition[]', summary: '查询条件'},
+          {key: 'take', type: 'number', summary: '数据数量'},
+          {key: 'skip', type: 'number', summary: '跳过数量'},
+
+        ]
+      }
       
   ];
   displayDataList = this.dataList.map(item => item);

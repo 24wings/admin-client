@@ -13,7 +13,7 @@ export class TableQueryToolbarEntity {
   age: number;
 }
 
-@Editor({ editTitle:'编辑' })
+@Editor({ editTitle: '编辑' })
 @DataManager({autoLoad: true, autoInsert: true, autoUpdate: true, autoRemove: true, adapter: 'local'})
 @DataGrid({ title: '基础查询表格', queryEntity: TableQueryToolbarEntity, editorEntity: TableQuerybar })
 export class TableQuerybar {

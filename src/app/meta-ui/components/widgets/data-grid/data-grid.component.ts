@@ -6,7 +6,7 @@ import { DataGridConfig } from 'src/app/meta-ui/core/widgets/data-grid-config';
 import { DataManagerComponent } from '../../data/data-manager/data-manager.component';
 @Component({ selector: 'data-grid', templateUrl: './data-grid.component.html' })
 export class DataGridComponent implements OnInit, AfterViewInit{
-  constructor(private httpClient: HttpClient) {}
+  
   @Input() config: DataGridConfig;
   @Input() data: any[];
   @ViewChild('dataManager') dataManager: DataManagerComponent;
@@ -19,7 +19,10 @@ export class DataGridComponent implements OnInit, AfterViewInit{
   editorMode: 'insert'|'update';
   sortByField?: string;
   orderBy: 'ascend'|'descend';
-  pageIndex= 1;
+  pageIndex = 1;
+  constructor(private httpClient: HttpClient) {
+
+  }
  
   sortBy(column){
       this.sortByField = column.key;
@@ -28,16 +31,17 @@ export class DataGridComponent implements OnInit, AfterViewInit{
        
   }
  async  ngOnInit(){
-   if (!this.config.selection === false ){
-     this.config.selection = true;
-   }
-   this.config.pageSize = this.config.pageSize || 10;
 
 
 
   }
   async ngAfterViewInit(){
-      await this.refresh();
+    // if (!this.config.selection === false ){
+    //   this.config.selection = true;
+    // }
+    // this.config.pageSize = this.config.pageSize || 10;
+ 
+    await this.refresh();
   }
   onAllChecked(checked: boolean): void {
     this.data.filter(({ disabled }) => !disabled).forEach(({ id }) => this.updateCheckedSet(id, checked));
@@ -59,7 +63,7 @@ export class DataGridComponent implements OnInit, AfterViewInit{
      key: this.sortByField,
    sort: this.orderBy
   };
-   const result = await this.dataManager.load({orderBy, take: this.config.pageSize, skip: (this.pageIndex - 1) * this.config.pageSize});
+   const result = await this.dataManager.load({orderBy, take: this.config.pageSize || 10, skip: (this.pageIndex - 1) * (this.config.pageSize || 10)});
    this.data = result.data.items;
    this.total = result.data.total;
   }

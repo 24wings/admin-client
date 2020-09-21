@@ -10,7 +10,7 @@ import { AdminUiMetaDataDocComponent } from './docs/admin-ui-meta-data-doc/admin
 import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
 
 
-const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent,TreeViewDocComponent];
+const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent, TreeViewDocComponent];
 
 @NgModule({
   imports: [SharedModule, MetaUiModule, DeveloperRoutingModule, MarkdownModule.forRoot( )],

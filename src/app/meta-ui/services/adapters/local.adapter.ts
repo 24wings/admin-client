@@ -33,7 +33,6 @@ export class LocalAdapter extends BasicAdapter{
 
   async   load(queryObject: QueryObject, dataManager: BasicDataManager): Promise<CommonPagedResponse>{
         const data = await  this.localDbService.load(dataManager.table, queryObject);
-        debugger;
         const items = this.dataQueryService.query(data.data.items, queryObject);
         data.data.items = items;
         return data;

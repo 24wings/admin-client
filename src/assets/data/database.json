@@ -1,6 +1,6 @@
 {
     "databaseName":"local",
-    "version":2,
+    "version":4,
     "tables":[
         {"name":"basic-data-grid", "keyPath":"id","autoIncrement":true,
         "columns":[ 
@@ -17,6 +17,15 @@
                 {"key":"birthDate","unique":false}
                 
             ]
+            },
+            {
+                "name":"tree-view-case","keyPath":"id","autoIncrement":true,
+                "columns":[
+                    {"key":"parentId","unique":false},
+                    {"key":"name","unique":false}
+                    
+                ]
+
             }
         
     ]

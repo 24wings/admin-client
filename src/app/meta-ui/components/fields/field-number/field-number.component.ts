@@ -10,6 +10,9 @@ export class FieldNumberComponent {
   get isValid() {
     return this.form.controls[this.config.key].valid;
   }
+  get formValue(){
+    return this.form.controls[this.config.key].value;
+  }
 
   constructor() {}
 }

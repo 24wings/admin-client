@@ -27,6 +27,7 @@ import { DataQueryService } from './services/data-query.service';
 import { EntityResolveMetaConfigService } from './services/entity-resovle-meta-config.service';
 import { IndexdbService } from './services/indexdb.service';
 import { LocalDbService } from './services/local-db.server';
+import { TreeUtilService } from './services/tree-uitl.service';
 import { ValidService } from './services/valid.service';
 const COMPONENTS = [
   FieldStringComponent,
@@ -52,7 +53,7 @@ const COMPONENTS = [
     MarkdownModule.forChild()
     // JsonEditorModule
   ],
-  declarations: [...COMPONENTS, DynamicDirective,DictionaryPipe],
+  declarations: [...COMPONENTS, DynamicDirective, DictionaryPipe],
   exports: [
     ...COMPONENTS,
  
@@ -68,7 +69,8 @@ const COMPONENTS = [
        FormGroupGenerateService,
     IndexdbService,
     LocalDbService,
-    DataQueryService
+    DataQueryService,
+    TreeUtilService
     ],
 })
 export class MetaUiModule {}
