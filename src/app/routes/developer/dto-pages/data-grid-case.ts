@@ -11,7 +11,7 @@ import { QueryToolbar } from 'src/app/meta-ui/decorators/widgets/query-toolbar';
 @DataManager({table: 'data-grid-case', autoLoad: true, adapter: 'local'})
 @DataGrid({title: 'DataGrid案例', pageSize: 1, selection: false, editorEntity: DataGridCase})
 export class DataGridCase{
-    @Field('id', {isPrimaryKey: true, readonly: true})
+    @Field('id', {isPrimaryKey: true, readonly: true,condition:'='})
     @Column('id', {isPrimaryKey: true})
     id: number;
     @Field('关键字', {condition: 'like'})

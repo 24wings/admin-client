@@ -10,6 +10,7 @@ import { FieldNumberComponent } from '../components/fields/field-number/field-nu
 import { FieldStringComponent } from '../components/fields/field-string/field-string.component';
 import { DataGridComponent } from '../components/widgets/data-grid/data-grid.component';
 import { EditorComponent } from '../components/widgets/editor/editor.component';
+import { TreeViewComponent } from '../components/widgets/tree-view/tree-view.component';
 
 @Injectable()
 export class ComponentRegisterProvider {
@@ -28,6 +29,8 @@ export class ComponentRegisterProvider {
     this.componentMappings.push({ alias: ComponentAlias.FieldDate, component: FieldDateComponent });
     this.componentMappings.push({ alias: ComponentAlias.FieldBoolean, component: FieldBooleanComponent });
     this.componentMappings.push({ alias: ComponentAlias.Editor, component: EditorComponent });
+    this.componentMappings.push({ alias: ComponentAlias.TreeView, component: TreeViewComponent });
+    
     
   }
 }

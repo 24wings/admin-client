@@ -8,6 +8,7 @@ import { DataGridSymbol } from '../decorators/widgets/data-grid';
 import { getDataManager } from '../decorators/widgets/data-manager';
 import { EditorSymbol, getEditor } from '../decorators/widgets/editor';
 import { getToolbar } from '../decorators/widgets/query-toolbar';
+import { getTreeView, TreeView } from '../decorators/widgets/tree-view';
 
 /**
  * 将实体解析成对应元数据
@@ -15,46 +16,63 @@ import { getToolbar } from '../decorators/widgets/query-toolbar';
 @Injectable()
 export class EntityResolveMetaConfigService {
   resolvelEntity(entity: new () => any) {
-    const columns = Reflect.getMetadata(ColumnsSymbol, entity.prototype || entity);
-    const config = Reflect.getMetadata(DataGridSymbol, entity) as DataGridConfig || Reflect.getMetadata(EditorSymbol, entity);
-    config.dataManager = getDataManager(entity);
+    const config = Reflect.getMetadata(DataGridSymbol, entity) as DataGridConfig || Reflect.getMetadata(EditorSymbol, entity) || getTreeView(entity);
+    switch (config.componentAlias){
+      case ComponentAlias.TreeView:
+       return this.resolveTreeView(entity);
+       case ComponentAlias.DataGrid:
+         return this.resolveDataGrid(entity);
+        case ComponentAlias.Editor:
+          return this.resolveEditor(entity);
+        case ComponentAlias.QueryToolbar:
+          return this.resolveToolbar(entity);
 
-    config.columns = columns;
-    // if (config.queryEntity) {
-    const queryToolbar = getToolbar(config.queryEntity  || entity);
-    if (queryToolbar){
-      queryToolbar.queryFields = getFields(config.queryEntity || entity);
-      queryToolbar.dataManager = config.dataManager;
-  
     }
-    
-    config.queryToolbar = queryToolbar;
-    // }
-    if (config.componentAlias !== ComponentAlias.Editor){
-      config.editor = this.resolveEditor(config.editorEntity || entity);
-
-    }else{
-      config.fields = getFields(config.queryEntity || entity);
-    }
-
-
-    if (config.dataManager){
-      config.dataManager.columns = columns;
-      config.dataManager.fields = config.editor ? config.editor.fields : getFields(config.queryEntity || entity);
-    }
- 
-    return config;
   }
+resolveDataGrid(entity){
+  const columns = Reflect.getMetadata(ColumnsSymbol, entity.prototype || entity);
 
-  resolveToolbar(entity) {}
+  const config = Reflect.getMetadata(DataGridSymbol, entity) as DataGridConfig ;
+  config.dataManager=this.resolveDataManager(entity);
+  config.columns = columns;
+  const queryToolbar =  this.resolveToolbar(config.queryEntity || entity);
+  if (queryToolbar){
+    queryToolbar.queryFields = getFields(config.queryEntity || entity);
+    queryToolbar.dataManager = this.resolveDataManager(entity);
+  }
+  config.queryToolbar=queryToolbar;
+  config.editor = this.resolveEditor(config.editorEntity || entity);
+  return config;
+}
+
+  resolveToolbar(entity) {
+    const toolbarConfig= getToolbar(entity);
+    toolbarConfig.dataManager=this.resolveDataManager(entity);
+    return toolbarConfig;
+    
+  }
 
   resolveEditor(entity){
     const editor = getEditor(entity);
     if (editor){
         editor.fields = getFields(entity);
-        editor.dataManager = getDataManager(entity);
+        editor.dataManager = this.resolveDataManager(entity);
     }
     return editor;
+  }
+  resolveDataManager(entity){
+    const dataManager = getDataManager(entity);
+    dataManager.fields = getFields(entity);
+    dataManager.columns = Reflect.getMetadata(ColumnsSymbol, entity.prototype || entity);
+
+    return dataManager;
+  }
+ 
+  resolveTreeView(entity){
+    const config = getTreeView(entity);
+    config.dataManager = this.resolveDataManager(entity);
+    config.editor=this.resolveEditor(entity);
+    return config;
   }
   
 }

@@ -1,34 +1,35 @@
 
 
 ```typescript
+@QueryToolbar({})
+@DataManager({table: 'basic-data-grid', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true, adapter: 'local'})
 
-@QueryToolbar({ loadUrl: 'assets/data/load-users.json' })
-export class TableQueryToolbarEntity {
-  @Field('姓名', { required: true })
-  name: string;
-  @Field('年龄')
-  age: number;
+export class BasicDataGridQueryToolbar{
+    @Field('姓名', {span: 12, condition: 'like'})
+    name: string;
+    @Field('开始日期', {span: 12})
+    startDate: Date;
+    @Field('截止日期', {span: 12})
+    endDate: Date;
+    
 }
 
-@Editor({ loadUrl: 'assets/data/load-user-detail.json', submitUrl: 'asset/data/update-use.json' })
-@DataGrid({ title: '基础查询表格', queryEntity: TableQueryToolbarEntity, editorEntity: TableQuerybar })
-export class TableQuerybar {
-  @Field('id', { readonly: true, isPrimaryKey: true })
-  @Column('id')
-  id: number;
+@Editor({editTitle: '编辑数据'})
+@DataGrid({title: '基本数据表格', queryEntity: BasicDataGridQueryToolbar})
+@DataManager({table: 'basic-data-grid', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true, adapter: 'local'})
+export class BasicDataGrid{
+    @Field('id', {isPrimaryKey: true, readonly: true})
+    @Column('id', {isPrimaryKey: true})
+    id: number;
+    @Field('姓名', {})
+    @Column('姓名', {})
+    name: string;
+    @Field('年龄', {})
+    @Column('年龄', {})
+    age: number;
+    @Field('生日', {})
+    @Column('生日', {})
+    birthDate: Date;
 
-  @Field('姓名')
-  @Column('姓名')
-  name: string;
-
-  @Field('生日')
-  @Column('生日', { format: 'yyyy-MM-dd ' })
-  birthDate: Date;
-  @Column('是否成年')
-  over18: boolean;
-  @Field('年龄')
-  @Column('年龄')
-  age: number;
 }
-
 ```

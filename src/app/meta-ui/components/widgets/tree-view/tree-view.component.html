@@ -1,0 +1,17 @@
+<page-header-wrapper [title]="title" [action]="action">
+    <ng-template #title>
+      {{ config.title }}
+    </ng-template>
+  
+    <ng-template #action>
+      <div style="display: flex; justify-content: flex-end">
+        <button nz-button nzType="primary" (click)="editorMode='insert'; selectedRecord = {}" *ngIf="config.editor"><i nz-icon nzType="plus"></i> {{ '新增' }}</button>
+        <!-- <button nzType="danger" nz-button (click)="deleteLanguage($event)">{{l('Remove')}}</button> -->
+      </div>
+    </ng-template>
+    <nz-card>
+        <nz-tree [nzData]="nodes" nzShowLine (nzClick)="nzEvent($event)"> </nz-tree>
+
+    </nz-card>
+
+</page-header-wrapper>

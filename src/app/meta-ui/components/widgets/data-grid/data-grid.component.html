@@ -1,11 +1,7 @@
-<!-- {{ data | json }} -->
-<!-- {{ config | json }} -->
+
 <page-header-wrapper [title]="title" [action]="action">
   <ng-template #title>
     {{ config.title }}
-    <!-- <span class="text-sm text-grey-dark">
-      <nz-divider nzType="vertical"></nz-divider>
-    </span> -->
   </ng-template>
 
   <ng-template #action>
@@ -19,6 +15,7 @@
       *ngIf="config.queryToolbar"
       [config]="config.queryToolbar"
       (searchResult)="data = $event.items; total = $event.total"
+      [pageSize]="config.pageSize"
     ></query-toolbar>
     <nz-table (nzPageIndexChange)="pageIndex=$event;refresh()" (nzPageSizeChange)="config.pageSize=$event;refresh()" [nzFrontPagination]="false" [nzPageSize]="config.pageSize" [nzTotal]="total" #basicTable nzShowSizeChanger [nzTotal]="total" [nzFrontPagination]="false" [nzData]="data">
       <thead>

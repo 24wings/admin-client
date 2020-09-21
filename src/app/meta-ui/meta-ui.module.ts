@@ -16,9 +16,11 @@ import { DataGridComponent } from './components/widgets/data-grid/data-grid.comp
 import { EditorComponent } from './components/widgets/editor/editor.component';
 import { MetaJsonComponent } from './components/widgets/meta-json/meta-json.component';
 import { QueryToolbarComponent } from './components/widgets/query-toolbar/query-toolbar.component';
+import { TreeViewComponent } from './components/widgets/tree-view/tree-view.component';
 import { FormGroupGenerateService } from './core/widgets/form-group-generate.service';
 import { DynamicDirective } from './directives/dynamic.directive';
 import { DynamicDtoPageComponent } from './pages/dynamic-dto-page/dynamic-dto-page.component';
+import { DictionaryPipe } from './pipes/dictionary.pipe';
 import { ComponentRegisterFactory } from './services/component-register-factory';
 import { ComponentRegisterProvider } from './services/component-register-provicer';
 import { DataQueryService } from './services/data-query.service';
@@ -41,7 +43,8 @@ const COMPONENTS = [
   FieldDateComponent,
   FieldNumberComponent,
   MetaJsonComponent,
-  DataManagerComponent
+  DataManagerComponent,
+  TreeViewComponent
 ];
 
 @NgModule({
@@ -49,12 +52,13 @@ const COMPONENTS = [
     MarkdownModule.forChild()
     // JsonEditorModule
   ],
-  declarations: [...COMPONENTS, DynamicDirective],
+  declarations: [...COMPONENTS, DynamicDirective,DictionaryPipe],
   exports: [
     ...COMPONENTS,
  
    
   ],
+  
   entryComponents: [...COMPONENTS],
   providers: [
     ComponentRegisterProvider,

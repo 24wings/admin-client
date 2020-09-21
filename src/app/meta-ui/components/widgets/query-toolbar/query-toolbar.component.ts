@@ -12,6 +12,7 @@ export class QueryToolbarComponent implements OnInit {
   data: any = [];
   total = 0;
   form: FormGroup;
+  @Input() pageSize=10;
   @ViewChild('dataManager') dataManager: DataManagerComponent;
   @Output() searchResult = new EventEmitter<{ items: any[]; total: number }>();
   constructor(
@@ -32,6 +33,7 @@ export class QueryToolbarComponent implements OnInit {
     //   });
     // }
   const queryObject =  this.dataQueryServerice.queryToolbarValueToQueryObject(this.form.getRawValue(), this.config);
+  queryObject.take=this.pageSize;
   const result =  await this.dataManager.load(queryObject);
   this.searchResult.emit(result.data);
 

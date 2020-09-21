@@ -10,10 +10,10 @@
 * @Field(field:BasicField)
  componentAlias:ComponentAlias枚举类型  组件别名
  默认映射四种基本数据类型
- string-> FieldString
- number -> FieldNumber
- Date -> FieldDate
- boolean -> FieldBoolean
+ * string-> FieldString
+ * number -> FieldNumber
+ * Date -> FieldDate
+ * boolean -> FieldBoolean
 
 # DataManager 组件
 数据操作管理

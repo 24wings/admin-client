@@ -33,8 +33,10 @@ import {
   MenuFoldOutline,
   MenuUnfoldOutline,
   MessageOutline,
+  MinusSquareOutline,
   PayCircleOutline,
   PieChartOutline,
+  PlusSquareOutline,
   PrinterOutline,
   RocketOutline,
   ScanOutline,
@@ -50,7 +52,7 @@ import {
   TrophyOutline,
   UsbOutline,
   UserOutline,
-  WeiboCircleOutline,
+  WeiboCircleOutline
 } from '@ant-design/icons-angular/icons';
 
 export const ICONS_AUTO = [
@@ -101,6 +103,8 @@ export const ICONS_AUTO = [
   UserOutline,
   WeiboCircleOutline,
   ClearOutline,
+  MinusSquareOutline,
+  PlusSquareOutline
 ];
 
 // pages/dynamic/UserDto =>UserDto

@@ -5,11 +5,12 @@ import { MarkdownModule } from 'ngx-markdown';
 import { MetaUiModule } from 'src/app/meta-ui/meta-ui.module';
 import { DeveloperRoutingModule } from './developer-routing.module';
 import { AdminUiDecoratorDocComponent } from './docs/admin-ui-decorator-doc/admin-ui-decorator-doc.component';
+import { TreeViewDocComponent } from './docs/admin-ui-decorator-doc/components/tree-view-doc/tree-view-doc.component';
 import { AdminUiMetaDataDocComponent } from './docs/admin-ui-meta-data-doc/admin-ui-meta-data-doc.component';
 import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
 
 
-const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent];
+const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent,TreeViewDocComponent];
 
 @NgModule({
   imports: [SharedModule, MetaUiModule, DeveloperRoutingModule, MarkdownModule.forRoot( )],
