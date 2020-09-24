@@ -17,5 +17,6 @@ export class DataManagerConfig{
     key?: string;
     fields?: BasicField[];
     columns?: BasicColumn[];
+    dvoName?: string;
     
 }

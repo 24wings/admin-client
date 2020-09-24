@@ -20,7 +20,9 @@ import { TreeViewComponent } from './components/widgets/tree-view/tree-view.comp
 import { FormGroupGenerateService } from './core/widgets/form-group-generate.service';
 import { DynamicDirective } from './directives/dynamic.directive';
 import { DynamicDtoPageComponent } from './pages/dynamic-dto-page/dynamic-dto-page.component';
+import { DynamicServerDtoPageComponent } from './pages/dynamic-server-dto-page/dynamic-server-dto-page.component';
 import { DictionaryPipe } from './pipes/dictionary.pipe';
+import { ComponentAliasToNameService } from './services/component-alias-to-name.service';
 import { ComponentRegisterFactory } from './services/component-register-factory';
 import { ComponentRegisterProvider } from './services/component-register-provicer';
 import { DataQueryService } from './services/data-query.service';
@@ -45,7 +47,8 @@ const COMPONENTS = [
   FieldNumberComponent,
   MetaJsonComponent,
   DataManagerComponent,
-  TreeViewComponent
+  TreeViewComponent,
+  DynamicServerDtoPageComponent
 ];
 
 @NgModule({
@@ -70,7 +73,8 @@ const COMPONENTS = [
     IndexdbService,
     LocalDbService,
     DataQueryService,
-    TreeUtilService
+    TreeUtilService,
+    ComponentAliasToNameService
     ],
 })
 export class MetaUiModule {}

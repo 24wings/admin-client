@@ -1,0 +1,31 @@
+POST http://localhost:8080/insert?className=com.demo.demo.sample.entitys.Customer
+Content-Type: application/json
+
+{
+    
+    "firstName":"a",
+    "lastName":"bc"
+}
+
+###
+
+GET http://localhost:8080/query?className=com.demo.demo.sample.entitys.Customer
+
+
+### remove
+GET http://localhost:8080/delete?className=com.demo.demo.sample.entitys.Customer&&id=1
+
+
+### update
+
+POST http://localhost:8080/update?className=com.demo.demo.sample.entitys.Customer
+Content-Type: application/json
+
+{
+    "id":"2",
+    "firstName":"aa",
+    "lastName":"bc"
+}
+
+###
+POST http://localhost:8080/api/dvo/loadByClassName?dvoName=com.demo.demo.sample.dvo.BasicDataGridDvo

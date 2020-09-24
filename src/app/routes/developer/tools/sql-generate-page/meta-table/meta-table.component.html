@@ -1,0 +1,72 @@
+<nz-modal [nzWidth]="'100%'" nzTitle="新增元数据" [nzVisible]="visible"  (nzOnOk)="submit()" (nzOnCancel)="visible=false">
+    
+    <div nz-form nzLayout="horizontal">
+        <nz-form-item>
+            <nz-form-label>sql</nz-form-label>
+            <nz-form-control>
+                <textarea nz-input style="width:100%" [(ngModel)]="sql">
+
+                </textarea>
+            </nz-form-control>
+        </nz-form-item>
+        <div nz-row nz-form nzLayout="horizontal">
+            <div nz-col nzSpan="12">
+                <nz-form-item >
+                    <nz-form-label>主键</nz-form-label>
+                    <nz-form-control><input nz-input [(ngModel)]="primaryKey"></nz-form-control>
+                </nz-form-item>
+            </div>
+        
+       
+        <div nz-col nzSpan="12">
+            <nz-form-item >
+                <nz-form-label>编辑 </nz-form-label>
+                <nz-form-control><nz-switch [(ngModel)]="allowEdit"></nz-switch> </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12" *ngIf="allowEdit">
+            <nz-form-item >
+                <nz-form-label>表</nz-form-label>
+                <nz-form-control><input nz-input [(ngModel)]="table"></nz-form-control>
+            </nz-form-item>
+        </div>
+       
+    </div>
+
+    </div>
+
+    <nz-table [nzData]="data">
+        <thead>
+            <tr> 
+                <th>标签</th>
+                <th>字段名</th>
+                <th>字段类型</th>
+                <th>列类型</th>
+                <th>允许编辑</th>
+                <th>编辑类型</th>
+             </tr>
+
+            </thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <th><input nz-input [(ngModel)]="item.label" width="80px"/> </th>
+                <td>{{item.field}}</td>
+                <td>{{item.type }}</td>
+                <td>
+                    <nz-select [(ngModel)]="item.componentAlias">
+                    <nz-option [nzLabel]="opt.value" [nzValue]="opt.name" *ngFor="let opt of columnTypeSelect"></nz-option>
+                </nz-select> 
+            </td>
+            <td>
+                <nz-switch [(ngModel)]="item.checked">  </nz-switch>
+            </td>
+            <td>
+              
+                    <nz-select [(ngModel)]="item.fieldComponentAlias">
+                    <nz-option [nzLabel]="opt.value" [nzValue]="opt.name" *ngFor="let opt of fieldTypeSelect"></nz-option>
+                </nz-select> 
+            </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-modal>

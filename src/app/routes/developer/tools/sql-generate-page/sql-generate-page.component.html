@@ -1,0 +1,21 @@
+<page-header-wrapper title="sql页面生成器" [action]="action">
+    <ng-template #action>
+        <div style="display: flex; justify-content: flex-end">
+          <button nz-button nzType="primary" (click)="editorMode='insert'; selectedRecord = {}" ><i nz-icon nzType="plus"></i> {{ '新增' }}</button>
+          </div>
+          </ng-template>
+    <nz-card>
+
+    <nz-table >
+        <thead><tr> <th></th> </tr></thead>
+        <tbody>
+            <tr *ngFor="let meta of data"> <td></td> </tr>
+        </tbody>
+    </nz-table>
+   
+
+  
+    </nz-card>
+</page-header-wrapper>
+
+<meta-table *ngIf="editorMode=='insert'"></meta-table>

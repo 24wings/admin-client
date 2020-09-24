@@ -69,6 +69,7 @@ export class DataGridComponent implements OnInit, AfterViewInit{
   }
  async delete(data){
    await this.dataManager.remove(data);
+   
    await  this.refresh();
   }
 

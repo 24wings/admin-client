@@ -1,6 +1,6 @@
 {
     "databaseName":"local",
-    "version":4,
+    "version":5,
     "tables":[
         {"name":"basic-data-grid", "keyPath":"id","autoIncrement":true,
         "columns":[ 
@@ -22,6 +22,14 @@
                 "name":"tree-view-case","keyPath":"id","autoIncrement":true,
                 "columns":[
                     {"key":"parentId","unique":false},
+                    {"key":"name","unique":false}
+                    
+                ]
+
+            },
+            {
+                "name":"Customer","keyPath":"id","autoIncrement":true,
+                "columns":[
                     {"key":"name","unique":false}
                     
                 ]

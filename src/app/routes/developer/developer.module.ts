@@ -7,10 +7,14 @@ import { DeveloperRoutingModule } from './developer-routing.module';
 import { AdminUiDecoratorDocComponent } from './docs/admin-ui-decorator-doc/admin-ui-decorator-doc.component';
 import { TreeViewDocComponent } from './docs/admin-ui-decorator-doc/components/tree-view-doc/tree-view-doc.component';
 import { AdminUiMetaDataDocComponent } from './docs/admin-ui-meta-data-doc/admin-ui-meta-data-doc.component';
+import { ServerDecoratorDocComponent } from './docs/server-decorator-doc/server-decorator-doc.component';
 import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
+import { MetaTableComponent } from './tools/sql-generate-page/meta-table/meta-table.component';
+import { SqlGeneratePageComponent } from './tools/sql-generate-page/sql-generate-page.component';
 
 
-const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent, TreeViewDocComponent];
+const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent, TreeViewDocComponent, 
+  ServerDecoratorDocComponent,SqlGeneratePageComponent,MetaTableComponent];
 
 @NgModule({
   imports: [SharedModule, MetaUiModule, DeveloperRoutingModule, MarkdownModule.forRoot( )],

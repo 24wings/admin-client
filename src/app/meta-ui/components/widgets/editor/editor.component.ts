@@ -28,12 +28,12 @@ export class EditorComponent implements OnInit {
   ngOnInit() {
     this.form = this.formGroupGenerateService.toFormGroup(this.config.fields, this.data ? this.data : {});
   }
-  submit() {
+ async  submit() {
     if (this.mode === 'update'){
-      this.dataManager.update(this.form.getRawValue());
+    await  this.dataManager.update(this.form.getRawValue());
 
     }else{
-      this.dataManager.insert(this.form.getRawValue());
+    await  this.dataManager.insert(this.form.getRawValue());
     }
     this.onSave.emit({action: this.mode, data: this.form.getRawValue()});
 

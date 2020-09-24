@@ -16,6 +16,8 @@ interface IDatabase{
 
 @Injectable()
 export class AppSettingsService{
+ serverIp='http://localhost:8080';
+
     constructor(private httpClient: HttpClient){}
     get dbVersion(): number{
         return localStorage.getItem('dbVersion') ? parseInt(localStorage.getItem('dbVersion')) : 0       ;
