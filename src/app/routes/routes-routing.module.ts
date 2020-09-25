@@ -27,6 +27,11 @@ const routes: Routes = [
         loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule),
       },
       {
+        path: 'dynamic',
+        loadChildren: () => import('./dynamic/dynamic.module').then((m) => m.DynamicModule),
+      },
+      
+      {
         path: 'developer',
         loadChildren: () => import('./developer/developer.module').then((m) => m.DeveloperModule),
       },

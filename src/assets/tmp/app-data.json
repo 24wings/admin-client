@@ -47,6 +47,32 @@
           ]
         },
         {
+          "text":"Sql页面生成器示例",
+          "i18n":"Sql页面生成器示例",
+          "icon": "anticon anticon-dashboard",
+          "children":[
+            {
+              "text":"test",
+              "i18n":"test",
+              "icon": "anticon anticon-dashboard",
+              "link":"/dynamic/page/meta/test"
+
+            },
+            {
+              "text":"user",
+              "i18n":"user",
+              "icon": "anticon anticon-dashboard",
+              "link":"/dynamic/page/meta/user"
+            },
+            {
+              "text":"user2",
+              "i18n":"user",
+              "icon": "anticon anticon-dashboard",
+              "link":"/dynamic/page/meta/user2"
+            }
+          ]
+        },
+        {
           "text": "基础查询表格",
           "i18n": "基础查询表格",
           "icon": "anticon anticon-dashboard",

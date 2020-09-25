@@ -1,2 +1,5 @@
 <!-- {{selectedConfig|json}} -->
+<dynamic-component [config]="json" [data]="data" *ngIf="json"></dynamic-component>
 <dynamic-component [config]="selectedConfig" [data]="data" *ngIf="selectedConfig"></dynamic-component>
+
+{{json|json}}

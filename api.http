@@ -29,3 +29,15 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8080/api/dvo/loadByClassName?dvoName=com.demo.demo.sample.dvo.BasicDataGridDvo
+
+
+
+###
+POST http://localhost:8080/api/sql/query?objectCode=test
+Content-Type: application/json
+
+{
+    "conditions":[]
+
+}
+

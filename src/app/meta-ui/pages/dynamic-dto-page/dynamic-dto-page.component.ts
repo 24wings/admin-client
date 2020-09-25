@@ -6,9 +6,13 @@ export class DynamicDtoPageComponent implements OnInit {
   @Input() entity;
   @Input() data;
   selectedConfig;
+  @Input() json;
 
   constructor(private entityResolveMetaConfigService: EntityResolveMetaConfigService) {}
   ngOnInit() {
-    this.selectedConfig = this.entityResolveMetaConfigService.resolvelEntity(this.entity);
+    if (this.entity){
+      this.selectedConfig = this.entityResolveMetaConfigService.resolvelEntity(this.entity);
+      
+    }
   }
 }

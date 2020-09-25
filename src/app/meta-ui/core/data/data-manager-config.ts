@@ -7,7 +7,7 @@ export class DataManagerConfig{
     updateUrl?: string;
     removeUrl?: string;
     table?: string;
-    adapter?: 'local'|'url'|'odata';
+    adapter?: 'local'|'url'|'odata'|'sql';
     adapterInstance?: any;
     autoLoad?: boolean;
     autoInsert?: boolean;

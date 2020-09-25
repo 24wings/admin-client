@@ -6,6 +6,7 @@ import { CommonResponse } from 'src/app/meta-ui/data/http/common-response';
 import { QueryObject } from 'src/app/meta-ui/data/query/query-object';
 import { BasicAdapter } from 'src/app/meta-ui/services/adapters/basic-adapter';
 import { LocalAdapter } from 'src/app/meta-ui/services/adapters/local.adapter';
+import { SqlAdapter } from 'src/app/meta-ui/services/adapters/sql.adapter';
 import { UrlAdapter } from 'src/app/meta-ui/services/adapters/url.adapter';
 import { LocalDbService } from 'src/app/meta-ui/services/local-db.server';
 
@@ -27,6 +28,8 @@ export class DataManagerComponent extends BasicDataManager implements OnInit{
                 this.adapterInstance = new LocalAdapter(this.injector);
                 // this.createTable();
                 break;
+            case 'sql':
+                this.adapterInstance = new SqlAdapter(this.injector);
         }
     }
 

@@ -1,41 +1,93 @@
-<nz-modal [nzWidth]="'100%'" nzTitle="新增元数据" [nzVisible]="visible"  (nzOnOk)="submit()" (nzOnCancel)="visible=false">
+<nz-modal [nzWidth]="'80%'" nzTitle="新增元数据" [nzVisible]="visible"  (nzOnOk)="submit()" (nzOnCancel)="visible=false" [nzOkDisabled]="!sql||!objectCode||!groupName||!primaryKey||!table ">
     
     <div nz-form nzLayout="horizontal">
         <nz-form-item>
-            <nz-form-label>sql</nz-form-label>
-            <nz-form-control>
+            <nz-form-label  [nzXs]="24" [nzSm]="2">sql</nz-form-label>
+            <nz-form-control [nzXs]="23" [nzSm]="22">
                 <textarea nz-input style="width:100%" [(ngModel)]="sql">
 
                 </textarea>
+
             </nz-form-control>
         </nz-form-item>
+        <div class="my-md" style="display: flex;justify-content: flex-end;"> 
+            <button nz-button nzType="primary" (click)="reset($event)">重置</button> 
+            <button nz-button nzType="primary" (click)="queryInfo($event)">解析sql</button> 
+            <button nz-button nzType="primary" [disabled]="!sql" (click)="resolve()">编译元数据</button> 
+            
+
+        
+        </div>
+        <div>{{metaObject|json}}</div>
         <div nz-row nz-form nzLayout="horizontal">
             <div nz-col nzSpan="12">
                 <nz-form-item >
-                    <nz-form-label>主键</nz-form-label>
-                    <nz-form-control><input nz-input [(ngModel)]="primaryKey"></nz-form-control>
+                    <nz-form-label  [nzXs]="24" [nzSm]="4">元数据编码</nz-form-label>
+                    <nz-form-control  [nzXs]="23" [nzSm]="20"><input nz-input [(ngModel)]="objectCode"></nz-form-control>
                 </nz-form-item>
             </div>
+            <div nz-col nzSpan="12">
+                <nz-form-item >
+                    <nz-form-label  [nzXs]="24" [nzSm]="4">元数据分组</nz-form-label>
+                    <nz-form-control  [nzXs]="23" [nzSm]="20"><input nz-input [(ngModel)]="groupName"></nz-form-control>
+                </nz-form-item>
+            </div>
+          
+            <div nz-col nzSpan="12">
+                <nz-form-item >
+                    <nz-form-label  [nzXs]="24" [nzSm]="4">页面标题</nz-form-label>
+                    <nz-form-control  [nzXs]="23" [nzSm]="20"><input nz-input [(ngModel)]="pageTitle"></nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="12">
+                <nz-form-item >
+                    <nz-form-label  [nzXs]="24" [nzSm]="4">控件类型</nz-form-label>
+                    <nz-form-control  [nzXs]="23" [nzSm]="20"><nz-select [(ngModel)]="componentAlias">
+                        <nz-option *ngFor="let option of controlType" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="12">
+                <nz-form-item >
+                    <nz-form-label [nzXs]="24" [nzSm]="4"> 主键</nz-form-label>
+                    <nz-form-control  [nzXs]="23" [nzSm]="20"><input nz-input [(ngModel)]="primaryKey"></nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="12" *ngIf="componentAlias==ComponentAlias.TreeView">
+                <nz-form-item >
+                    <nz-form-label [nzXs]="24" [nzSm]="4"> 父级组件</nz-form-label>
+                    <nz-form-control  [nzXs]="23" [nzSm]="20"><input nz-input [(ngModel)]="primaryKey"></nz-form-control>
+                </nz-form-item>
+            </div>
+            
         
        
         <div nz-col nzSpan="12">
             <nz-form-item >
-                <nz-form-label>编辑 </nz-form-label>
-                <nz-form-control><nz-switch [(ngModel)]="allowEdit"></nz-switch> </nz-form-control>
+                <nz-form-label [nzXs]="24" [nzSm]="4">编辑 </nz-form-label>
+                <nz-form-control [nzXs]="23" [nzSm]="20"><nz-switch [(ngModel)]="allowEdit"></nz-switch> </nz-form-control>
             </nz-form-item>
         </div>
         <div nz-col nzSpan="12" *ngIf="allowEdit">
             <nz-form-item >
-                <nz-form-label>表</nz-form-label>
-                <nz-form-control><input nz-input [(ngModel)]="table"></nz-form-control>
+                <nz-form-label [nzXs]="24" [nzSm]="4">表</nz-form-label>
+                <nz-form-control [nzXs]="23" [nzSm]="20"><input nz-input [(ngModel)]="table"></nz-form-control>
             </nz-form-item>
         </div>
+        <div nz-col nzSpan="12" >
+            <nz-form-item >
+                <nz-form-label [nzXs]="24" [nzSm]="4">预加载数据</nz-form-label>
+                <nz-form-control [nzXs]="23" [nzSm]="20"><nz-switch [(ngModel)]="firstLoad"></nz-switch> </nz-form-control>
+            </nz-form-item>
+        </div>
+       
        
     </div>
 
     </div>
 
-    <nz-table [nzData]="data">
+    <nz-table [nzData]="data" #dataTable>
         <thead>
             <tr> 
                 <th>标签</th>
@@ -48,8 +100,8 @@
 
             </thead>
         <tbody>
-            <tr *ngFor="let item of data">
-                <th><input nz-input [(ngModel)]="item.label" width="80px"/> </th>
+            <tr *ngFor="let item of dataTable.data">
+                <td><input nz-input [(ngModel)]="item.label" style="width:80px"/> </td>
                 <td>{{item.field}}</td>
                 <td>{{item.type }}</td>
                 <td>
@@ -58,7 +110,7 @@
                 </nz-select> 
             </td>
             <td>
-                <nz-switch [(ngModel)]="item.checked">  </nz-switch>
+                <nz-switch [(ngModel)]="item.allowEdit">  </nz-switch>
             </td>
             <td>
               

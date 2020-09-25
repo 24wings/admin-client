@@ -6,13 +6,14 @@
           </ng-template>
     <nz-card>
 
-    <nz-table >
+    <!-- <nz-table >
         <thead><tr> <th></th> </tr></thead>
         <tbody>
             <tr *ngFor="let meta of data"> <td></td> </tr>
         </tbody>
-    </nz-table>
+    </nz-table> -->
    
+    <dynamic-dto-page [json]="metaObject"></dynamic-dto-page>
 
   
     </nz-card>

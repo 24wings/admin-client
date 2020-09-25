@@ -6,7 +6,9 @@ export class SqlGeneratePageComponent implements OnInit{
 
     data: any[] = [];
     total;
-    editorMode:string;
+    editorMode: string;
+    metaObject = {componentAlias: 'DataGrid', title: '', columns: [], dataManager: {adapter: 'sql', autoLoad: true, autoInsert: false}};
+
     constructor(private httpClient: HttpClient){}
 
 
@@ -16,9 +18,9 @@ export class SqlGeneratePageComponent implements OnInit{
     }
 
    async refresh(){
-      const result =   await  this.httpClient.post(`http://localhost:8080/api/sql/load`, {conditions: [], take: 10, skip: 0, orderBy: {sort: 'desc', fieldName: 'name'}}).toPromise() as any;
-      this.data = result.data;
-      this.total = result.total;
+    //   const result =   await  this.httpClient.post(`http://localhost:8080/api/sql/load`, {conditions: [], take: 10, skip: 0, orderBy: {sort: 'desc', fieldName: 'name'}}).toPromise() as any;
+    //   this.data = result.data;
+    //   this.total = result.total;
     }
 
 
