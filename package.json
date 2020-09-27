@@ -25,7 +25,8 @@
     "color-less": "node scripts/color-less.js",
     "theme": "node scripts/theme.js",
     "icon": "ng g ng-alain:plugin icon",
-    "publish": "ng build --prod --base-href \"https://24wings.github.io/admin-client/\""
+    "publish": "ng build --prod --base-href \"https://24wings.github.io/admin-client/\"",
+    "nswag": "cd nswag && nswag run"
   },
   "dependencies": {
     "@agm/core": "^1.1.0",
@@ -76,7 +77,8 @@
     "rxjs": "~6.5.4",
     "screenfull": "^5.0.2",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "nswag": "^13.5.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",
