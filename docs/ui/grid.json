@@ -1,0 +1,23 @@
+{
+    "$schema": "../json-schema/data-grid.json",
+    "title": "测试",
+    "componentAlias": "DataGrid",
+    "columns": [
+        {"isPrimaryKey": true,"label": "id","key": "id","componentAlias": "ColumnNumber"},
+        {"key": "name","label": "姓名","componentAlias": "ColumnString"},
+        {"key": "age","label": "年龄","componentAlias": "ColumnNumber"},
+        {"key": "birthDate","label": "生日","componentAlias": "ColumnDate"}
+    
+    ],
+   
+    "dataManager": {"adapter": "local","primaryKey": "id","table": "basic-data-grid"},
+    "queryToolbar": {"queryFields": [{"key": "name","componentAlias": "FieldString","label": "关键字","condition": "like"}]},
+    
+    "editor": {
+        "fields": [
+            {"key": "id","isPrimaryKey": true,"label": "id","componentAlias": "FieldNumber"},
+            {"key": "name","isPrimaryKey": true,"label": "名字","componentAlias": "FieldString"},
+            {"key": "birthDate","isPrimaryKey": true,"label": "生日","componentAlias": "FieldDate"}
+    ],
+    "dataManager": {"primaryKey": "id","adapter": "local","table": "basic-data-grid"}}
+}

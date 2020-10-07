@@ -1,0 +1,1 @@
+{"version":3,"file":"column-boolean.component.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/components/columns/column-boolean/column-boolean.component.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,mBAAmB,EAAE,MAAM,uDAAuD,CAAC;;AAE5F,qBACa,sBAAsB;IACxB,MAAM,EAAE,mBAAmB,CAAC;IAC5B,IAAI,EAAE,GAAG,CAAC;iCAFR,sBAAsB;2CAAtB,sBAAsB;CAGlC"}

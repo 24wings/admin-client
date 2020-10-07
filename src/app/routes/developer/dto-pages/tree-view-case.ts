@@ -1,8 +1,9 @@
-import { Column } from 'src/app/meta-ui/decorators/columns/column';
-import { Field } from 'src/app/meta-ui/decorators/fields/field';
-import { DataManager } from 'src/app/meta-ui/decorators/widgets/data-manager';
-import { Editor } from 'src/app/meta-ui/decorators/widgets/editor';
-import { TreeView } from 'src/app/meta-ui/decorators/widgets/tree-view';
+import { Column } from 'projects/dtu-ng-ant-design/src/lib/decorators/columns/column';
+import { Field } from 'projects/dtu-ng-ant-design/src/lib/decorators/fields/field';
+import { DataManager } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/data-manager';
+import { Editor } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/editor';
+import { TreeView } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/tree-view';
+
 
 @Editor({})
 @DataManager({adapter: 'local', table: 'tree-view-case', autoLoad: true, autoInsert: true, autoRemove: true, autoUpdate: true})

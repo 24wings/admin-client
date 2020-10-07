@@ -1,0 +1,21 @@
+<nz-card>
+
+<div style="display: flex;min-height: 800px;">
+    <div style="flex:1">
+        <div>
+            <textarea nz-input [(ngModel)]="json" rows="20  "></textarea>
+<div>
+
+            <button nz-button nzType="primary" (click)="preview()">预览</button> <button nz-button (click)="clear()" >清楚</button>
+        </div>
+
+        </div>
+    </div>
+    <div style="flex:1">
+        <dynamic-component [config]="config" *ngIf="config"></dynamic-component>
+
+    </div>
+
+
+</div>
+</nz-card>

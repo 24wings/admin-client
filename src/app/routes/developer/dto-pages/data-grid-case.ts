@@ -1,10 +1,9 @@
-import { Column } from 'src/app/meta-ui/decorators/columns/column';
-import { Field } from 'src/app/meta-ui/decorators/fields/field';
-import { DataGrid } from 'src/app/meta-ui/decorators/widgets/data-grid';
-import { DataManager } from 'src/app/meta-ui/decorators/widgets/data-manager';
-import { Editor } from 'src/app/meta-ui/decorators/widgets/editor';
-import { QueryToolbar } from 'src/app/meta-ui/decorators/widgets/query-toolbar';
-
+import { Column } from 'projects/dtu-ng-ant-design/src/lib/decorators/columns/column';
+import { Field } from 'projects/dtu-ng-ant-design/src/lib/decorators/fields/field';
+import { DataGrid } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/data-grid';
+import { DataManager } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/data-manager';
+import { Editor } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/editor';
+import { QueryToolbar } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/query-toolbar';
 
 @Editor({})
 @QueryToolbar({})

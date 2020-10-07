@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "查询工具条",
+    "type":"object",
+    "properties": {
+        "dataManager":{
+            "description": "数据园",
+            "$ref": "./data-manager.json"
+        },
+        "queryFields":{
+            "description": "查询条件数组",
+            "type":"array",
+            "items": {
+                "$ref": "./field-config.json"
+            }
+        }
+    }
+}

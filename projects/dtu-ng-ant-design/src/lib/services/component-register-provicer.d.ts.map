@@ -1,0 +1,1 @@
+{"version":3,"file":"component-register-provicer.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/services/component-register-provicer.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,cAAc,EAAE,MAAM,oBAAoB,CAAC;;AAapD,qBACa,yBAAyB;IACpC,iBAAiB,EAAE;QAAE,KAAK,EAAE,cAAc,CAAC;QAAC,SAAS,EAAE,GAAG,CAAA;KAAE,EAAE,CAAM;;iCADzD,yBAAyB;qCAAzB,yBAAyB;CAoBrC"}

@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "数据源",
+    "properties": {
+        "table":{
+         "description":   "数据来源于那张表格,若本地存储则必填",
+         "type":"string"
+        },
+        "autoLoad":{
+            "description": "自动加载数据",
+            "type":"boolean"
+        },
+        "autoRemove":{
+            "description": "自动删除",
+            "type":"boolean"
+        },
+        "autoUpdate":{
+            "description": "自动更新",
+            "type":"boolean"
+        },
+        "autoInsert":{
+            "description": "自动插入",
+            "type":"boolean"
+        },
+        "adapter": {
+            "enum": ["local","url","sql","odata"]
+        },
+        "primaryKey":{
+            "type":"string",
+            "description": "主键"
+        }
+        
+    },
+    "required": ["primaryKey","adapter"]
+
+}

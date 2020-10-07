@@ -25,6 +25,7 @@
     "color-less": "node scripts/color-less.js",
     "theme": "node scripts/theme.js",
     "icon": "ng g ng-alain:plugin icon",
+    "build-library":"ng build dtu-ng-ant-design",
     "publish": "ng build --prod --base-href \"https://24wings.github.io/admin-client/\"",
     "nswag": "cd nswag && nswag run"
   },
@@ -77,11 +78,11 @@
     "rxjs": "~6.5.4",
     "screenfull": "^5.0.2",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "nswag": "^13.5.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",
+    "@angular-devkit/build-ng-packagr": "~0.901.12",
     "@angular/cli": "~9.1.6",
     "@angular/compiler-cli": "~9.1.9",
     "@angular/language-service": "~9.1.9",
@@ -113,6 +114,7 @@
     "mockjs": "^1.1.0",
     "ng-alain": "^9.4.0",
     "ng-alain-codelyzer": "^0.0.1",
+    "ng-packagr": "^9.0.0",
     "prettier": "^2.0.5",
     "protractor": "~5.4.3",
     "stylelint": "^13.3.1",

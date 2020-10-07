@@ -1,0 +1,19 @@
+<ng-container>
+  <nz-form-item style="text-align: center" [formGroup]="form">
+    <nz-form-label [nzFor]="config.key" [nzRequired]="config.valid" [nzXs]="24" [nzSm]="4">{{ config.label || config.key }}</nz-form-label>
+    <nz-form-control [nzXs]="23" [nzSm]="20" [nzValidateStatus]="isValid" [nzErrorTip]="errorTip">
+      <span *ngIf="config.readonly"> {{formValue}}</span> 
+
+        <input  *ngIf="!config.readonly"
+        nz-input
+        [disabled]="config.readonly"
+        style="width: 80%"
+        type="number"
+        [placeholder]="config.label || config.key"
+        [formControlName]=" config.key"
+        [id]="config.key"
+      />
+      <ng-template #errorTip> </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+</ng-container>

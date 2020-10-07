@@ -1,0 +1,1 @@
+{"version":3,"file":"basic-dynamic-component.config.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/core/basic-dynamic-component.config.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,oBAAoB,CAAC;AAEpD,8BAAsB,2BAA2B;IAC/C,cAAc,CAAC,EAAE,cAAc,CAAC;CACjC"}

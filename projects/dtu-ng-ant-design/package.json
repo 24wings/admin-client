@@ -1,0 +1,12 @@
+{
+  "name": "dtu-ng-ant-design",
+  "version": "0.0.1",
+  "author": {"email": "2121718893@qq.com","name": "24wings","url": "https://github.com/24wings/admin-client.git"},
+  "peerDependencies": {
+    "@angular/common": "^10.1.4",
+    "@angular/core": "^10.1.4"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

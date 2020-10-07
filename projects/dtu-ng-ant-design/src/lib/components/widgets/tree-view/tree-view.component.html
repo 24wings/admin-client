@@ -1,0 +1,68 @@
+<ng-page-header-wrapper [title]="title" [action]="action">
+  <ng-template #title>
+    {{ config.title }}
+  </ng-template>
+
+  <ng-template #action>
+    <div style="display: flex; justify-content: flex-end">
+      <button nz-button nzType="primary" (click)="editorMode='insert-top' " *ngIf="config.editor"><i
+          nz-icon nzType="plus"></i> {{ '新增顶级' }}</button>
+      <!-- <button nzType="danger" nz-button (click)="deleteLanguage($event)">{{l('Remove')}}</button> -->
+    </div>
+  </ng-template>
+  <div nz-row [nzGutter]="{sm:32,md:32}">
+    <div nzSpan="8" nz-col> 
+    <nz-card  [nzTitle]="'树'">
+
+      <div >
+        <nz-tree [nzData]="nodes" nzShowLine (nzClick)="nzEvent($event)"
+          (nzClick)="selectRecord()" #nzTreeSelect> </nz-tree>
+        <data-manager [config]="config.dataManager" #dataManager></data-manager>
+      </div>
+
+    </nz-card>
+  </div>
+  <div  nzSpan="16" nz-col *ngIf="selectedRecord">
+    <nz-card [nzTitle]="'详情'" [nzExtra]="extraTemplate">
+      <div>
+
+        <div nz-row >
+          <ng-container *ngFor="let column of config.columns">
+            <div class="field-label field" nz-col nzSpan="4">{{column.label}}</div>
+            <div class="field-value field" nz-col nzSpan="8">
+              <dynamic-component [config]="column" [data]="selectedRecord.origin"></dynamic-component>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <ng-template #extraTemplate>
+        <a nz-button nzType="link" (click)="editorMode='insert-level'"> <i nz-icon nzType="plus"></i>添加同级</a>
+        <a nz-button nzType="link" (click)="editorMode='insert-child'">  <i nz-icon nzType="plus"></i>添加下级</a>
+        <a nz-button nzType="link" (click)="editorMode='update'"> <i nz-icon nzType="edit"></i> 编辑</a>
+        <a nz-button nzType="link" (click)="remove()" nz-popconfirm
+        nzPopconfirmTitle="确认删除这条数据?"
+        nzPopconfirmPlacement="bottom"
+        (nzOnConfirm)="remove()"
+       > <i nz-icon nzType="delete"></i> 删除</a>
+        
+        
+      </ng-template>
+    </nz-card>
+  </div>
+  </div>
+
+
+
+  <!-- 顶级编辑框 -->
+  <meta-editor [config]="topEditor" [data]="{}" *ngIf="editorMode=='insert-top'" [mode]="'insert'" (onSave)="editorMode=null; refresh();"
+    (onclose)="editorMode=null;"></meta-editor>
+  <!-- 同级编辑框 -->
+  <meta-editor [config]="levelEditor" [data]="newLevelRecord" *ngIf="editorMode=='insert-level'" [mode]="'insert'" (onSave)="editorMode=null;refresh()"></meta-editor>
+  <!-- 下级编辑框 -->
+  <meta-editor [config]="childEditor" [data]="newChildRecord" *ngIf="editorMode=='insert-child'" [mode]="'insert'" (onSave)="editorMode=null;refresh()"></meta-editor>
+  
+<!-- 编辑框 -->
+<meta-editor [config]="config.editor" [data]="selectRecord()" *ngIf="editorMode=='update'" [mode]="'update'" (onSave)="editorMode=null;refresh()"></meta-editor>
+  
+</ng-page-header-wrapper>

@@ -1,8 +1,0 @@
-<div *ngIf="data">
-  <ng-container *ngIf="data[config.key]">
-    {{ config.trueDisplay ? config.trueDisplay : '是' }}
-  </ng-container>
-  <ng-container *ngIf="!data[config.key]">
-    {{ config.falseDisplay ? config.falseDisplay : '否' }}
-  </ng-container>
-</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"column-date.component.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/components/columns/column-date/column-date.component.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,gBAAgB,EAAE,MAAM,oDAAoD,CAAC;;AAEtF,qBACa,mBAAmB;IACrB,MAAM,EAAE,gBAAgB,CAAC;IACzB,IAAI,EAAE,GAAG,CAAC;IACnB,aAAa,SAAgB;IAC7B,IAAI,MAAM,WAET;iCANU,mBAAmB;2CAAnB,mBAAmB;CAO/B"}

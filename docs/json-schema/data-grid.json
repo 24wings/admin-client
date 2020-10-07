@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "数据表格页面的jsonschema",
+    "type":"object",
+    "properties": {
+        "title":{
+            "description": "页面标题",
+            "type":"string"
+        },
+        "columns":{
+            "type":"array",
+            "items": {
+                "$ref": "./column-config.json"
+            },
+            "description": "表格列数组"
+        },
+        "componentAlias":{
+            "description": "使用哪种数据表格",
+            "enum": ["DataGrid","TreeView"]
+
+        },
+        "dataManager":{
+            "description": "数据源",
+            "$ref": "./data-manager.json"
+        },
+        "queryToolbar":{
+            "description": "查询工具条",
+            "$ref": "./query-toolbar-config.json"
+        },
+        "editor":{
+            "description": "编辑器",
+            "$ref": "./editor-config.json"
+        }
+    },
+    "required": ["title","columns","componentAlias","dataManager","queryToolbar"]
+}

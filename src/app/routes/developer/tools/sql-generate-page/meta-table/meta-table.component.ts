@@ -1,13 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ComponentAlias } from 'src/app/meta-ui/component-alais';
-import { BasicColumn } from 'src/app/meta-ui/core/basic-column';
-import { DataManagerConfig } from 'src/app/meta-ui/core/data/data-manager-config';
-import { DataGridConfig } from 'src/app/meta-ui/core/widgets/data-grid-config';
-import { EditorConfig } from 'src/app/meta-ui/core/widgets/editor-config';
-import { TreeViewConfig } from 'src/app/meta-ui/core/widgets/tree-view-config';
-import { TreeView } from 'src/app/meta-ui/decorators/widgets/tree-view';
-import { ComponentAliasToNameService } from 'src/app/meta-ui/services/component-alias-to-name.service';
+import { BasicColumn } from 'projects/dtu-ng-ant-design/src/lib/core/basic-column';
+import { DataManagerConfig } from 'projects/dtu-ng-ant-design/src/lib/core/data/data-manager-config';
+import { EditorConfig } from 'projects/dtu-ng-ant-design/src/lib/core/widgets/editor-config';
+import { TreeViewConfig } from 'projects/dtu-ng-ant-design/src/lib/core/widgets/tree-view-config';
+import { ComponentAlias, ComponentAliasToNameService, DataGridConfig } from 'projects/dtu-ng-ant-design/src/public-api';
 
 @Component({selector: 'meta-table',
  templateUrl: './meta-table.component.html', 

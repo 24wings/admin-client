@@ -1,5 +1,5 @@
-import { Column } from 'src/app/meta-ui/decorators/columns/column';
-import { DataGrid } from 'src/app/meta-ui/decorators/widgets/data-grid';
+import { Column } from 'projects/dtu-ng-ant-design/src/lib/decorators/columns/column';
+import { DataGrid } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/data-grid';
 
 @DataGrid({ title: '用户中心' })
 export class BasicUser {

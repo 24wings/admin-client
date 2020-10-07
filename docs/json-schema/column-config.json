@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "表格列",
+    "properties": {
+        "isPrimaryKey":{
+            "type":"boolean",
+            "description": "是否主键"
+        },
+        "label":{
+            "description": "列头",
+            "type":"string"
+        },
+        "key":{
+            "description": "主键",
+            "type":"string"
+            
+        },
+        "componentAlias":{
+            "enum": ["ColumnNumber","ColumnString","ColumnDate"]
+        }
+    }
+}

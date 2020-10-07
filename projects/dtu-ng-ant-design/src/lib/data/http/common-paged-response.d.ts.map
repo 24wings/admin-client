@@ -1,0 +1,1 @@
+{"version":3,"file":"common-paged-response.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/data/http/common-paged-response.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,mBAAmB,CAAC;AAEnD,qBAAa,mBAAoB,SAAQ,cAAc;IACvD,IAAI,EAAE;QAAC,KAAK,EAAE,MAAM,CAAC;QAAC,KAAK,EAAE,GAAG,EAAE,CAAA;KAAC,CAAC;CACnC"}

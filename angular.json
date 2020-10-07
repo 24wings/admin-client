@@ -148,6 +148,46 @@
           }
         }
       }
+    },
+    "dtu-ng-ant-design": {
+      "projectType": "library",
+      "root": "projects/dtu-ng-ant-design",
+      "sourceRoot": "projects/dtu-ng-ant-design/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/dtu-ng-ant-design/tsconfig.lib.json",
+            "project": "projects/dtu-ng-ant-design/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dtu-ng-ant-design/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dtu-ng-ant-design/src/test.ts",
+            "tsConfig": "projects/dtu-ng-ant-design/tsconfig.spec.json",
+            "karmaConfig": "projects/dtu-ng-ant-design/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dtu-ng-ant-design/tsconfig.lib.json",
+              "projects/dtu-ng-ant-design/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-alain"

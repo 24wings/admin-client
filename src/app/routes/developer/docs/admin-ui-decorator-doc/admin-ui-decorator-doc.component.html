@@ -47,8 +47,8 @@
                 <meta-json [entity]="BasicEditorCase"></meta-json>
             </nz-tab>
             <nz-tab nzTitle="预览">
-                <button nz-button (click)="basicEditorCaseJson=entityResolveMetaConfigService.resolvelEntity(BasicEditorCase)">显示Editor组件编辑框</button>
-                <button nz-button (click)="basicEditorCaseDynamicComponentJson=entityResolveMetaConfigService.resolvelEntity(BasicEditorCase)">显示动态组件Editor</button>
+                <!-- <button nz-button (click)="basicEditorCaseJson=entityResolveMetaConfigService.resolvelEntity(BasicEditorCase)">显示Editor组件编辑框</button> -->
+                <!-- <button nz-button (click)="basicEditorCaseDynamicComponentJson=entityResolveMetaConfigService.resolvelEntity(BasicEditorCase)">显示动态组件Editor</button> -->
                 <meta-editor [mode]="'insert'" [config]="basicEditorCaseJson" *ngIf="basicEditorCaseJson" (onSave)="basicEditorCaseJson=null;logEditorContent($event)" (onclose)="basicEditorCaseJson=null;"></meta-editor>
                 <dynamic-component [config]="basicEditorCaseDynamicComponentJson" *ngIf="basicEditorCaseDynamicComponentJson"></dynamic-component>
 

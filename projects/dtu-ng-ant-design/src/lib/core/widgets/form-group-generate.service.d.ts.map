@@ -1,0 +1,1 @@
+{"version":3,"file":"form-group-generate.service.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/core/widgets/form-group-generate.service.ts"],"names":[],"mappings":"AACA,OAAO,EAAe,SAAS,EAAc,MAAM,gBAAgB,CAAC;AACpE,OAAO,EAAE,UAAU,EAAE,MAAM,gBAAgB,CAAC;;AAC5C,qBACa,wBAAwB;IACnC,WAAW,CAAC,MAAM,EAAE,UAAU,EAAE,EAAE,IAAI,GAAE,GAAO;iCADpC,wBAAwB;qCAAxB,wBAAwB;CAUpC"}

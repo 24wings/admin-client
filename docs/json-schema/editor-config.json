@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "编辑器",
+    "properties": {
+        "componentAlias":{
+            "description": "组件别名",
+            "enum": ["Editor"]
+        },
+        "columns":{
+            "description": "列",
+            "type":"array",
+            "items": {
+                "$ref": "./column-config.json"
+            }
+
+        },
+        "fields":{
+            "description": "字段数组",
+            "type":"array",
+            "items": {
+                "$ref": "./field-config.json"
+            }
+        },
+        "dataManager":{
+            "$ref": "./data-manager.json"
+        }
+        
+    }
+
+}

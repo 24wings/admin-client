@@ -1,9 +1,7 @@
-import { Column } from 'src/app/meta-ui/decorators/columns/column';
-import { Field } from 'src/app/meta-ui/decorators/fields/field';
-import { DataGrid } from 'src/app/meta-ui/decorators/widgets/data-grid';
-import { DataManager } from 'src/app/meta-ui/decorators/widgets/data-manager';
-import { Editor } from 'src/app/meta-ui/decorators/widgets/editor';
-import { QueryToolbar } from 'src/app/meta-ui/decorators/widgets/query-toolbar';
+
+import { Field } from 'projects/dtu-ng-ant-design/src/lib/decorators/fields/field';
+import { DataManager } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/data-manager';
+import { Editor } from 'projects/dtu-ng-ant-design/src/lib/decorators/widgets/editor';
 import { DataGridCase } from './data-grid-case';
 
 @Editor({editTitle: '编辑模态框', insertTitle: '新增模态框'})

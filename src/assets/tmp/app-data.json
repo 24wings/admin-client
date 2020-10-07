@@ -79,11 +79,11 @@
           "link": "/developer/dynamic/TableQuerybar"
         },
         {
-          "text": "快捷菜单",
-          "i18n": "menu.shortcut",
+          "text": "元数据编辑器",
+          "i18n": "元数据编辑器",
           "icon": "anticon anticon-rocket",
           "shortcutRoot": true,
-          "children": []
+          "link": "/developer/tools/json-editor"
         },
         {
           "text": "开发者文档",

@@ -1,0 +1,1 @@
+{"version":3,"file":"query-toolbar.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/decorators/widgets/query-toolbar.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,yCAAyC,CAAC;AAE7E,eAAO,MAAM,kBAAkB,eAA0B,CAAC;AAC1D,wBAAgB,YAAY,CAAC,MAAM,EAAE,kBAAkB,yBAKtD;AACD,wBAAgB,UAAU,CAAC,MAAM,KAAA,OAEhC"}

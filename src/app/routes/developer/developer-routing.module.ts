@@ -5,6 +5,7 @@ import { TreeViewDocComponent } from './docs/admin-ui-decorator-doc/components/t
 import { AdminUiMetaDataDocComponent } from './docs/admin-ui-meta-data-doc/admin-ui-meta-data-doc.component';
 import { ServerDecoratorDocComponent } from './docs/server-decorator-doc/server-decorator-doc.component';
 import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
+import { JsonEditorComponent } from './json-editor/json-editor.component';
 import { SqlGeneratePageComponent } from './tools/sql-generate-page/sql-generate-page.component';
 
 @NgModule({
@@ -16,7 +17,9 @@ import { SqlGeneratePageComponent } from './tools/sql-generate-page/sql-generate
       {path: 'doc/admin-ui-decorator-doc', component: AdminUiDecoratorDocComponent},
       {path: 'doc/admin-ui-decorator-doc/tree-view-doc', component: TreeViewDocComponent},
       {path: 'doc/server-decorator-doc', component: ServerDecoratorDocComponent},
-      {path: 'tools/sql-generate-page', component: SqlGeneratePageComponent}
+      {path: 'tools/sql-generate-page', component: SqlGeneratePageComponent},
+      {path: 'tools/json-editor', component: JsonEditorComponent},
+      
       
       
     ]),
