@@ -25,7 +25,7 @@
     "color-less": "node scripts/color-less.js",
     "theme": "node scripts/theme.js",
     "icon": "ng g ng-alain:plugin icon",
-    "build-library":"ng build dtu-ng-ant-design",
+    "build-library":"ng build dtu-ng-ant-design --prod",
     "publish": "ng build --prod --base-href \"https://24wings.github.io/admin-client/\"",
     "nswag": "cd nswag && nswag run"
   },
