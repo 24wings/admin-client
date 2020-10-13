@@ -109,6 +109,14 @@
                   "i18n": "使用示例",
                   "icon": "anticon anticon-rocket",
                   "link": "/developer/doc/admin-ui-decorator-doc"
+                }
+                ,{
+                  
+                    "text": "代码生成器",
+                    "i18n": "代码生成器",
+                    "icon": "anticon anticon-rocket",
+                    "link": "/developer/tools/code-generate"
+                  
                 },
                 {
                   "text": "TreeView",

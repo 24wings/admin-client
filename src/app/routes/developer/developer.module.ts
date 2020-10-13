@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { MarkdownModule } from 'ngx-markdown';
-import { DtuNgAntDesignModule } from 'projects/dtu-ng-ant-design/src/public-api';
+import { DtuNgAntDesignModule, EntityResolveMetaConfigService } from 'projects/dtu-ng-ant-design/src/public-api';
+import { CodeGenerateComponent } from './code-generate/code-generate.component';
 
 import { DeveloperRoutingModule } from './developer-routing.module';
 import { AdminUiDecoratorDocComponent } from './docs/admin-ui-decorator-doc/admin-ui-decorator-doc.component';
@@ -16,11 +17,12 @@ import { SqlGeneratePageComponent } from './tools/sql-generate-page/sql-generate
 
 const COMPONENTS = [DynamicPageComponent, AdminUiMetaDataDocComponent, AdminUiDecoratorDocComponent, TreeViewDocComponent, 
   ServerDecoratorDocComponent,SqlGeneratePageComponent,MetaTableComponent
-,JsonEditorComponent];
+,JsonEditorComponent,CodeGenerateComponent];
 
 @NgModule({
   imports: [SharedModule, DtuNgAntDesignModule.forChild(), DeveloperRoutingModule, MarkdownModule.forRoot( )],
   declarations: [...COMPONENTS],
   entryComponents: [...COMPONENTS],
+  providers:[]
 })
 export class DeveloperModule {}

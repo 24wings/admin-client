@@ -42,6 +42,6 @@ export * from './lib/components/widgets/editor/editor.component';
 export * from './lib/components/widgets/query-toolbar/query-toolbar.component';
 export * from './lib/pages/dynamic-dto-page/dynamic-dto-page.component';
 export * from './lib/pages/dynamic-server-dto-page/dynamic-server-dto-page.component';
-
+export * from './lib/pages/code-gen/code-gen.component';
 
 

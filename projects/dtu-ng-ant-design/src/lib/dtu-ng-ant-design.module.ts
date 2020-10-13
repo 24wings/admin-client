@@ -23,6 +23,7 @@ import { FormGroupGenerateService } from './core/widgets/form-group-generate.ser
 import { DynamicDirective } from './directives/dynamic.directive';
 import { NgPageGridComponent } from './layout/ng-page-grid.component';
 import { NgPageHeaderWrapperComponent } from './layout/ng-page-header.component';
+import { CodeGenComponent } from './pages/code-gen/code-gen.component';
 import { DynamicDtoPageComponent } from './pages/dynamic-dto-page/dynamic-dto-page.component';
 import { DynamicServerDtoPageComponent } from './pages/dynamic-server-dto-page/dynamic-server-dto-page.component';
 import { ComponentAliasToNameService } from './services/component-alias-to-name.service';
@@ -59,6 +60,7 @@ const COMPONENTS = [
   NgPageHeaderWrapperComponent,
   NgPageGridComponent,
   DynamicDirective,
+  CodeGenComponent
 ];
 @NgModule({
   declarations: [...COMPONENTS],
@@ -90,8 +92,8 @@ export class DtuNgAntDesignModule {
 
   public static forChild(): ModuleWithProviders{
     return {
-      ngModule:DtuNgAntDesignModule,
-      providers:[ AppSettingsService,
+      ngModule: DtuNgAntDesignModule,
+      providers: [ AppSettingsService,
         ComponentRegisterProvider,
         ComponentRegisterFactory,
          EntityResolveMetaConfigService,

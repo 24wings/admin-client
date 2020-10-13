@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CodeGenerateComponent } from './code-generate/code-generate.component';
 import { AdminUiDecoratorDocComponent } from './docs/admin-ui-decorator-doc/admin-ui-decorator-doc.component';
 import { TreeViewDocComponent } from './docs/admin-ui-decorator-doc/components/tree-view-doc/tree-view-doc.component';
 import { AdminUiMetaDataDocComponent } from './docs/admin-ui-meta-data-doc/admin-ui-meta-data-doc.component';
@@ -19,6 +20,8 @@ import { SqlGeneratePageComponent } from './tools/sql-generate-page/sql-generate
       {path: 'doc/server-decorator-doc', component: ServerDecoratorDocComponent},
       {path: 'tools/sql-generate-page', component: SqlGeneratePageComponent},
       {path: 'tools/json-editor', component: JsonEditorComponent},
+      {path: 'tools/code-generate', component: CodeGenerateComponent},
+      
       
       
       
