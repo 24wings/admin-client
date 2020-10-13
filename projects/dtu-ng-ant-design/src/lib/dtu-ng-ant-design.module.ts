@@ -26,6 +26,7 @@ import { NgPageHeaderWrapperComponent } from './layout/ng-page-header.component'
 import { CodeGenComponent } from './pages/code-gen/code-gen.component';
 import { DynamicDtoPageComponent } from './pages/dynamic-dto-page/dynamic-dto-page.component';
 import { DynamicServerDtoPageComponent } from './pages/dynamic-server-dto-page/dynamic-server-dto-page.component';
+import { CodeGenService } from './services/code-gen.service';
 import { ComponentAliasToNameService } from './services/component-alias-to-name.service';
 import { ComponentRegisterFactory } from './services/component-register-factory';
 import { ComponentRegisterProvider } from './services/component-register-provicer';
@@ -86,7 +87,8 @@ const COMPONENTS = [
    LocalDbService,
    DataQueryService,
    TreeUtilService,
-   ComponentAliasToNameService]
+   ComponentAliasToNameService,
+   CodeGenService]
 })
 export class DtuNgAntDesignModule { 
 
@@ -103,7 +105,9 @@ export class DtuNgAntDesignModule {
        LocalDbService,
        DataQueryService,
        TreeUtilService,
-       ComponentAliasToNameService],
+       ComponentAliasToNameService,
+       CodeGenService
+      ],
     
     };
   }

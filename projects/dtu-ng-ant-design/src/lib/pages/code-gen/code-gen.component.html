@@ -1,6 +1,25 @@
 
 <ng-container *ngIf="config">
-<markdown>
-    {{code}}
-</markdown>
+    <nz-tabset [nzTabPosition]="'right'">
+        <nz-tab [nzTitle]="type.name">
+            <h2>{{type.name}}.component.html</h2>
+            <markdown>
+            {{html}}
+            </markdown>
+
+            <h2>{{type.name}}.component.ts</h2>
+            <markdown>
+            {{code}}
+            </markdown>
+        </nz-tab>
+        
+
+        <nz-tab [nzTitle]="'编辑页面'">
+            <markdown>
+            {{code}}
+            </markdown>
+        </nz-tab>
+        
+    </nz-tabset>
+
 </ng-container>
