@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CodeGenService } from '../../services/code-gen.service';
 import { EntityResolveMetaConfigService } from '../../services/entity-resovle-meta-config.service';
 
-@Component({selector: 'code-gen', templateUrl: './code-gen.component.html'})
+@Component({selector: 'code-gen', templateUrl: './code-gen.component.html',styleUrls:['./code-gen.component.css']})
 export class CodeGenComponent{
     @Input() type;
     config;
@@ -19,6 +19,14 @@ export class CodeGenComponent{
       this.css = result.css;
     }
 
+    copy(text){
+     const divEl= document.createElement('textarea');
+     divEl.value=text;
+     divEl.style.visibility='none';
+     document.body.appendChild(divEl);
+     divEl.select();
+     document.execCommand("Copy");
 
+    }
     
 }
