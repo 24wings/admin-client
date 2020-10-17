@@ -1,0 +1,43 @@
+<div style="padding: 20px;padding-right: 0;">
+    <button nz-button nzType="primary" (click)="addMoudleVisible=true">新增模块</button>
+    <nz-tabset>
+        <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
+            <ng-template #titleTemplate>
+                <i nz-icon [nzType]="tab.icon"></i>
+                {{ tab.name }}
+            </ng-template>
+            <div style="min-width: 800px;">
+                <button nz-button nzType="default" class="action-btn" nzShape="circle" (click)="tab.edit=true"
+                    *ngIf="!tab.edit"><i nz-icon nzType="edit"></i></button>
+                <button nz-button nzType="default" class="action-btn" nzShape="circle"
+                    (click)="tab.edit=false;save(tab)" *ngIf="tab.edit"><i nz-icon nzType="save"></i></button>
+                <markdown *ngIf="!tab.edit&&tab.data" >
+```yml
+{{tab.data}}
+```                    
+                </markdown>
+                <textarea *ngIf="tab.edit" 
+                    style="background-color: rgb(32, 8, 8);width: 100%;color:#e2e2e2;height: 100%;" nz-input rows="35">
+{{tab.data}}
+      </textarea>
+            </div>
+        </nz-tab>
+    </nz-tabset>
+    <nz-modal [nzTitle]="'新增模块'" nzWidth="800" [nzVisible]="addMoudleVisible" (nzOnOk)="addNewModule()">
+        <div nz-form>
+            <nz-form-item>
+                <nz-form-label>模块名称</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [(ngModel)]="newModule.name">
+                </nz-form-control>    
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label>模块代码</nz-form-label>
+                <nz-form-control>
+                    <textarea nz-input [(ngModel)]="newModule.code">
+                        </textarea>
+                </nz-form-control>    
+            </nz-form-item>
+        </div>
+    </nz-modal>
+</div>

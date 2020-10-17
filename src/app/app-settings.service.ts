@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IndexdbService } from 'projects/dtu-ng-ant-design/src/lib/services/indexdb.service';
 
 interface IDatabase{
     databaseName: string;
@@ -16,7 +17,7 @@ interface IDatabase{
 
 @Injectable()
 export class AppSettingsService{
- serverIp='http://localhost:8080';
+ serverIp = 'http://localhost:8080';
 
     constructor(private httpClient: HttpClient){}
     get dbVersion(): number{
@@ -27,30 +28,42 @@ export class AppSettingsService{
     }
    async  initDatabase(){
      const database =   await this.httpClient.get<IDatabase>('assets/data/database.json').toPromise();
-     this.dbVersion=database.version;
-     this.createOrOpenDatabase(database);
+     this.dbVersion = database.version;
+    //  this.createOrOpenDatabase(database);
+    //  const db = await this.indexDbServoce.createDatabase('local', this.dbVersion);
+     await this.createOrOpenDatabase(database);
     }
 
-    async createOrOpenDatabase(database: IDatabase): Promise<IDBDatabase>{
-        let db;
+    async createOrOpenDatabase( database: IDatabase): Promise<IDBDatabase>{
+        
         const request =  indexedDB.open(database.databaseName, database.version);
         return new Promise(resolve => {
-
         request.onupgradeneeded =  (event) => {
-            db = (event.target as any).result;
+            window.db = (event.target as any).result;
             database.tables.forEach(table => {
                 if (!db.objectStoreNames.contains(table.name)) {
                     let objectStore;
 
-                    objectStore = db.createObjectStore(table.name, { keyPath: table.keyPath,autoIncrement:table.autoIncrement });
+                    objectStore = window.db.createObjectStore(table.name, { keyPath: table.keyPath, autoIncrement: table.autoIncrement });
                     table.columns.forEach(col => objectStore.createIndex(col.key, col.key, {unique: col.unique}));
 
                   }
             });
          
           };
+        request.onsuccess = (event) => {
+            window.db = (event.target as any).result;
+            database.tables.forEach(table => {
+                if (!db.objectStoreNames.contains(table.name)) {
+                    let objectStore;
+                    objectStore = window.db.createObjectStore(table.name, { keyPath: table.keyPath, autoIncrement: table.autoIncrement });
+                    table.columns.forEach(col => objectStore.createIndex(col.key, col.key, {unique: col.unique}));
+                  }
+            });
+          };
 
         });
+
 
     }
 }

@@ -8,7 +8,11 @@ import {
   InfoOutline,
   LinkOutline,
   ProfileOutline,
-  
+  LeftOutline,
+  RightOutline,
+  ControlOutline,
+  SaveOutline,
+  ProjectOutline
 } from '@ant-design/icons-angular/icons';
 
 export const ICONS = [
@@ -19,4 +23,9 @@ export const ICONS = [
   LinkOutline,
   FolderOutline,
   FileZipOutline,
+  LeftOutline,
+  RightOutline,
+  ControlOutline,
+  SaveOutline,
+  ProjectOutline
 ];

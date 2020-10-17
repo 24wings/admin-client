@@ -91,18 +91,22 @@ const APPINIT_PROVIDES = [
 ];
 // #endregion
 
+import { MarkdownModule } from 'ngx-markdown';
+import { AppSettingsService } from './app-settings.service';
 import { AppComponent } from './app.component';
+import { CodeManageService } from './code-manage.service';
 import { CoreModule } from './core/core.module';
 import { GlobalConfigModule } from './global-config.module';
 import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
-import { AppSettingsService } from './app-settings.service';
+import { SystemEditorComponent } from './system-editor.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SystemEditorComponent],
   imports: [
+    MarkdownModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -116,7 +120,7 @@ import { AppSettingsService } from './app-settings.service';
     ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES,
   ],
-  providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
+  providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES, CodeManageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

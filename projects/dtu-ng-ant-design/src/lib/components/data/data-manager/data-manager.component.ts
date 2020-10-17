@@ -42,7 +42,7 @@ export class DataManagerComponent extends BasicDataManager implements OnInit{
         return this.adapterInstance.loadDetail(queryObject, this.config );
     }
     insert(data: any): Promise<CommonResponse> {
-       const primaryKey = this.config.fields.find(key => key.isPrimaryKey).key;
+       const primaryKey = this.config.key;
        delete data[primaryKey];
 
        return this.adapterInstance.insert(data, this.config );

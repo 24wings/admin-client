@@ -3,30 +3,35 @@ import * as _ from 'loadsh';
 import { AppSettingsService } from '../app-settings.service';
 import { DataManagerConfig } from '../core/data/data-manager-config';
 import { BasicDataManager } from '../data/basic-data-manager';
+declare interface Window{
+  db:any;
+}
 @Injectable()
 export class IndexdbService{
   constructor(private appSettingsService: AppSettingsService){}
     createDatabase(databaseName: string, version): Promise<IDBDatabase>{
       return new Promise(resolve => {
-        let db;
         const request =  indexedDB.open(databaseName, version);
         request.onerror = (event) => {
           console.error('数据库打开错误');
           resolve(null);
       };
         request.onsuccess = (event) => {
-        db = request.result;
-        console.log('数据库打开成功');
-        resolve(db);
+          debugger;
+          (window as any).db = request.result;
+          console.log('数据库打开成功');
+          resolve((window as any).db);
       };
         request.onupgradeneeded = (event) => {
-        db = (event.target as any).result;
-        resolve(db);
+          debugger;
+          (window as any).db = (event.target as any).result;
+          resolve((window as any).db);
       };    
         
       });
         
     }
+  
 
       createTable(db: IDBDatabase, dataManager: DataManagerConfig){
 
@@ -36,6 +41,7 @@ export class IndexdbService{
       _.uniq(keys).forEach(key => objectStore.createIndex(key, key, { unique: false }));
 
     }
+    
 
    
 

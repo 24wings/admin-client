@@ -1,0 +1,57 @@
+module: rbac
+widgets:
+
+pages:
+  -
+    name: menu
+    title: 菜单管理
+    componentAlias: DataGrid
+    columns:
+        - 
+          key: id
+          isPrimaryKey: true
+          label: id
+          componentAlias: ColumnString
+        - 
+          key: name
+          isPrimaryKey: true
+          label: 姓名
+          componentAlias: ColumnString
+        - 
+          key:  birthDate
+          isPrimaryKey: true
+          label: 生日
+          componentAlias: ColumnDate
+          
+          
+    
+          
+    # 数据源
+    dataManager: &dataManagerRef
+        key: id
+        adapter: local
+        table: menu
+    
+    # 查询工具条
+    queryToolbar:
+        dataManager: *dataManagerRef
+    
+    # 编辑器
+    editor:
+        dataManager: *dataManagerRef
+        componentAlias: Editor
+        fields:
+            - 
+                key: id
+                label: id
+                isPrimaryKey: true
+                componentAlias:  FieldNumber
+            - 
+                key: name
+                label: 姓名
+                componentAlias: FieldString
+            -
+                key: birthDate
+                label: 生日
+                componentAlias: FieldDate
+                

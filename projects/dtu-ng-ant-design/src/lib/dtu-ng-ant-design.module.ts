@@ -106,7 +106,7 @@ export class DtuNgAntDesignModule {
        DataQueryService,
        TreeUtilService,
        ComponentAliasToNameService,
-       CodeGenService
+       CodeGenService,
       ],
     
     };

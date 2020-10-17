@@ -25,7 +25,7 @@
     "color-less": "node scripts/color-less.js",
     "theme": "node scripts/theme.js",
     "icon": "ng g ng-alain:plugin icon",
-    "build-library":"ng build dtu-ng-ant-design --prod",
+    "build-library": "ng build dtu-ng-ant-design --prod",
     "publish": "ng build --prod --base-href \"https://24wings.github.io/admin-client/\"",
     "nswag": "cd nswag && nswag run"
   },
@@ -64,6 +64,7 @@
     "element-closest": "^3.0.2",
     "file-saver": "^2.0.2",
     "js-base64": "^2.5.2",
+    "js-yaml": "^3.14.0",
     "loadsh": "^0.0.4",
     "masonry-layout": "^4.2.2",
     "ng-zorro-antd": "^9.1.2",

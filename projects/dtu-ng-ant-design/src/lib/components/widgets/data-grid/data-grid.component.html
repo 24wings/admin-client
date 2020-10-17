@@ -17,7 +17,7 @@
       (searchResult)="data = $event.items; total = $event.total"
       [pageSize]="config.pageSize"
     ></query-toolbar>
-    <nz-table (nzPageIndexChange)="pageIndex=$event;refresh()" (nzPageSizeChange)="config.pageSize=$event;refresh()" [nzFrontPagination]="false" [nzPageSize]="config.pageSize" [nzTotal]="total" #basicTable nzShowSizeChanger [nzTotal]="total" [nzFrontPagination]="false" [nzData]="data">
+    <nz-table (nzPageIndexChange)="pageIndex=$event;refresh()"  (nzPageSizeChange)="config.pageSize=$event;refresh()" [nzFrontPagination]="true" [nzPageSize]="config.pageSize||10" [nzTotal]="total" #basicTable nzShowSizeChanger  [nzFrontPagination]="false" [nzData]="data">
       <thead>
         <tr>
           <th [nzChecked]="checked" *ngIf="config.selection" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
@@ -55,6 +55,7 @@
       [mode]="editorMode"
       (onSave)="selectedRecord=null;refresh()"
     ></meta-editor>
+    {{config.editor|json}}
     <data-manager #dataManager [config]="config.dataManager" ></data-manager>
   </nz-card>
 </ng-page-header-wrapper>

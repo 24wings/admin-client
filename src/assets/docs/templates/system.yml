@@ -1,0 +1,24 @@
+module: system
+# 系统标题
+app-title: 所见所得系统编辑器
+# 系统默认菜单
+menus:
+
+  - id: 1
+    text: 主导航
+    icon: anticon anticon-dashboard
+    i18n: 主导航
+    group: true
+    hideInBreadcrumb: true
+    children:
+      - id: 2
+        text: 角色权限
+        icon: anticon anticon-dashboard
+        i18n: 角色权限
+        children:
+          -
+            id: 3
+            text: 菜单管理
+            icon: anticon anticon-dashboard
+            i18n: 菜单管理
+            link: /pages/rbac/menu

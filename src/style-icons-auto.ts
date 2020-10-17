@@ -52,7 +52,10 @@ import {
   TrophyOutline,
   UsbOutline,
   UserOutline,
-  WeiboCircleOutline
+  WeiboCircleOutline,
+  LeftOutline,
+  DatabaseTwoTone,
+  
 } from '@ant-design/icons-angular/icons';
 
 export const ICONS_AUTO = [
@@ -104,7 +107,9 @@ export const ICONS_AUTO = [
   WeiboCircleOutline,
   ClearOutline,
   MinusSquareOutline,
-  PlusSquareOutline
+  PlusSquareOutline,
+  LeftOutline,
+  DatabaseTwoTone
 ];
 
 // pages/dynamic/UserDto =>UserDto

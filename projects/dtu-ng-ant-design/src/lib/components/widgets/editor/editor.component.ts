@@ -29,13 +29,14 @@ export class EditorComponent implements OnInit {
     this.form = this.formGroupGenerateService.toFormGroup(this.config.fields, this.data ? this.data : {});
   }
  async  submit() {
-    if (this.mode === 'update'){
+   debugger;
+   if (this.mode === 'update'){
     await  this.dataManager.update(this.form.getRawValue());
 
     }else{
     await  this.dataManager.insert(this.form.getRawValue());
     }
-    this.onSave.emit({action: this.mode, data: this.form.getRawValue()});
+   this.onSave.emit({action: this.mode, data: this.form.getRawValue()});
 
    
   }

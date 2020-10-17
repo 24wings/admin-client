@@ -7,9 +7,39 @@ import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  template: ` <router-outlet></router-outlet> `,
+  template: `
+  <div style="display:flex; ">
+    <div style="flex:1" *ngIf="showEditor">
+      <system-editor></system-editor>
+     
+    </div>
+    <div style="height:100vh">
+    
+    <div class="close-btn" *ngIf="showEditor" (click)="showEditor=false"><i nz-icon nzType="left"></i> </div>
+    <div class="open-btn"  *ngIf="!showEditor"  (click)="showEditor=true"><i nz-icon nzType="right"></i> </div>
+  
+</div>
+    <div style="flex:1">
+   <router-outlet></router-outlet> 
+    </div>
+</div>
+   `,
+   styles:[
+     `.close-btn,.open-btn{
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e2e2;
+      color: #e2e2e2;
+      cursor: pointer;
+  
+     }
+     
+     `
+   ]
 })
 export class AppComponent implements OnInit {
+  showEditor=true;
   constructor(
     el: ElementRef,
     renderer: Renderer2,

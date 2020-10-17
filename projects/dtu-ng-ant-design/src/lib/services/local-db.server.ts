@@ -5,8 +5,10 @@ import { BasicDataManager } from '../data/basic-data-manager';
 import { CommonPagedResponse } from '../data/http/common-paged-response';
 import { CommonResponse } from '../data/http/common-response';
 import { QueryObject } from '../data/query/query-object';
-import { IndexdbService } from './indexdb.service';
-
+import {  IndexdbService } from './indexdb.service';
+declare interface Window{
+  db:any;
+}
 @Injectable()
 export class LocalDbService{
     db: IDBDatabase;
@@ -16,15 +18,12 @@ export class LocalDbService{
       private appSettingService: AppSettingsService){
     }
     
-    async createTable(dataManager: DataManagerConfig){
-      const db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
-      this.indexDbService.createTable(db, dataManager);
-    }
-    
+  
 
   async  load(table, queryObject: QueryObject): Promise<CommonPagedResponse>{
-        this.db = await this.indexDbService.createDatabase(this.databaseName, this.appSettingService.dbVersion);
+        this.db =  (window as any).db;
         return new Promise(resolve => {
+          
         const transaction = this.db.transaction([table]);
         const objectStore = transaction.objectStore(table);
         const request = objectStore.getAll();
