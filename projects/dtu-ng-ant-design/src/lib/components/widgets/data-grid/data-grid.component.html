@@ -55,7 +55,6 @@
       [mode]="editorMode"
       (onSave)="selectedRecord=null;refresh()"
     ></meta-editor>
-    {{config.editor|json}}
     <data-manager #dataManager [config]="config.dataManager" ></data-manager>
   </nz-card>
 </ng-page-header-wrapper>
