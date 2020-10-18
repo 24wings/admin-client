@@ -1,0 +1,25 @@
+
+<ng-container>
+    <nz-form-item style="text-align: center" [formGroup]="form">
+      <nz-form-label [nzFor]="config.key" [nzRequired]="config.valid" [nzXs]="24" [nzSm]="4">{{ config.label || config.key }}</nz-form-label>
+      <nz-form-control [nzXs]="23" [nzSm]="20" [nzValidateStatus]="isValid" [nzErrorTip]="errorTip">
+            <nz-tree
+            #nzTreeComponent
+            [nzData]="nodes"
+            nzCheckable
+            [nzCheckedKeys]="defaultCheckedKeys"
+            [nzSelectedKeys]="defaultSelectedKeys"
+            (nzCheckBoxChange)="nzCheck($event)"
+            >
+            </nz-tree>
+            <ng-container *ngIf="form">
+            {{formValue|json}}
+            </ng-container>
+        <ng-template #errorTip> </ng-template>
+{{config|json}}
+
+      </nz-form-control>
+    </nz-form-item>
+  </ng-container>
+  <data-manager [config]="config.dataManager" #dataManager></data-manager>
+  

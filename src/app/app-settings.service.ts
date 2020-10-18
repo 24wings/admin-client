@@ -26,12 +26,18 @@ export class AppSettingsService{
     set dbVersion(value: number){
         localStorage.setItem('dbVersion', value + '');
     }
-   async  initDatabase(){
-     const database =   await this.httpClient.get<IDatabase>('assets/data/database.json').toPromise();
-     this.dbVersion = database.version;
-    //  this.createOrOpenDatabase(database);
-    //  const db = await this.indexDbServoce.createDatabase('local', this.dbVersion);
-     await this.createOrOpenDatabase(database);
+   async  initDatabase(db?: IDatabase){
+       if (db){
+        this.dbVersion = db.version;
+        await this.createOrOpenDatabase(db);
+       }else{
+        const database =   await this.httpClient.get<IDatabase>('assets/data/database.json').toPromise();
+        this.dbVersion = database.version;
+       //  this.createOrOpenDatabase(database);
+       //  const db = await this.indexDbServoce.createDatabase('local', this.dbVersion);
+        await this.createOrOpenDatabase(database);
+       }
+
     }
 
     async createOrOpenDatabase( database: IDatabase): Promise<IDBDatabase>{
@@ -61,8 +67,15 @@ export class AppSettingsService{
                   }
             });
           };
-
+        request.onerror = (e) => {
+            console.error(e);
+        };
+        
+        request.onblocked = (e) => {
+            console.error(e);
+        };
         });
+       
 
 
     }

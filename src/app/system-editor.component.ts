@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MenuService } from '@delon/theme';
+import { AppSettingsService } from './app-settings.service';
 import { CodeManageService } from './code-manage.service';
 
 @Component({selector: 'system-editor', templateUrl: './system-editor.component.html', styleUrls: ['./system-editor.component.css']})
 export class SystemEditorComponent{
+  @Output() onChange = new EventEmitter();
     newModule = {
         name: '新模块',
         code: ''
@@ -33,22 +35,33 @@ export class SystemEditorComponent{
             edit: false
         }
       ];
-      constructor(private httpClient: HttpClient, private menuService: MenuService, private codeManageService: CodeManageService){}
+      constructor(private httpClient: HttpClient, private menuService: MenuService, private codeManageService: CodeManageService, private appSettingsService: AppSettingsService){}
      async ngOnInit(){
-         const system = this.codeManageService.getSystemCode();
-         if (system){
-           this.tabs[0].data = system;
-           this.save(this.tabs[0]);
-         }else{
-            const data = await this.httpClient.get('assets/docs/templates/system.yml', {responseType: 'text'}).toPromise();
-            this.tabs[0].data = data;
-            console.log(jsyaml.load(data));
-         }
-         const data = await this.httpClient.get('assets/docs/templates/rbac.yml', {responseType: 'text'}).toPromise();
-         this.codeManageService.addModule(jsyaml.load(data));
-      
+        await this.reloadSystem();
+        const data = await this.httpClient.get('assets/docs/templates/rbac.yml', {responseType: 'text'}).toPromise();
+        this.codeManageService.addModule(jsyaml.load(data));
+        const data2 = await this.httpClient.get('assets/docs/templates/database.yml', {responseType: 'text'}).toPromise();
+        this.tabs[2].data = data2;
+        this.reloadDatabase();
       }
-      save(tab){
+     async reloadDatabase(){
+       const databaseModule = jsyaml.load(  this.tabs[2].data);
+        // this.codeManageService.addModule(jsyaml.load(data));
+       this.appSettingsService.initDatabase(databaseModule);
+      }
+     async reloadSystem(){
+        const system = this.codeManageService.getSystemCode();
+
+        if (system){
+          this.tabs[0].data = system;
+          this.save(this.tabs[0]);
+        }else{
+           const data = await this.httpClient.get('assets/docs/templates/system.yml', {responseType: 'text'}).toPromise();
+           this.tabs[0].data = data;
+           console.log(jsyaml.load(data));
+        }
+      }
+     async save(tab){
          console.log( jsyaml.load(tab.data));
          const moduleJson = jsyaml.load(tab.data);
          if (moduleJson.module === 'system'){
@@ -56,11 +69,20 @@ export class SystemEditorComponent{
              this.menuService.clear();
              this.menuService.add(moduleJson.menus);
              this.codeManageService.setSystemCode(tab.data);
+         }else if (moduleJson.module === 'database'){
+           await this.reloadDatabase();
+
          }
+         this.onChange.emit();
       }
       addNewModule(){
           this.tabs.push({name: this.newModule.name, data: this.newModule.code, edit: false, icon: 'project'});
           this.addMoudleVisible = false;
           this.codeManageService.setModuleCodes(this.tabs.slice(1));
+      }
+      clearLocalDatabase(){
+        indexedDB.deleteDatabase('local');
+        this.reloadDatabase();
+        this.onChange.emit();
       }
 }

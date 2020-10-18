@@ -1,0 +1,20 @@
+
+<h1>tree-checked.component</h1>
+<form nz-form >
+<nz-tree
+#nzTreeComponent
+[nzData]="nodes"
+nzCheckable
+[nzCheckedKeys]="defaultCheckedKeys"
+[nzExpandedKeys]="defaultExpandedKeys"
+[nzSelectedKeys]="defaultSelectedKeys"
+(nzClick)="nzClick($event)"
+(nzContextMenu)="nzClick($event)"
+(nzCheckBoxChange)="nzCheck($event)"
+(nzExpandChange)="nzCheck($event)"
+>
+</nz-tree>
+<ng-container *ngIf="form">
+{{formValue|json}}
+</ng-container>
+</form>

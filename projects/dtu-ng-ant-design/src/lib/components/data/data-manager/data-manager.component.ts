@@ -51,7 +51,7 @@ export class DataManagerComponent extends BasicDataManager implements OnInit{
         return this.adapterInstance.update(data, this.config );
     }
     remove(data: any): Promise<CommonResponse> {
-       const primaryKey =  this.config.columns.find(c => c.isPrimaryKey).key;
+       const primaryKey =  this.config.key;
 
        return this.adapterInstance.remove(data[primaryKey], this.config );
     }

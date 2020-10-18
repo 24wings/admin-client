@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
   template: `
   <div style="display:flex; ">
     <div style="flex:1" *ngIf="showEditor">
-      <system-editor></system-editor>
+      <system-editor (onChange)="reload()"></system-editor>
      
     </div>
     <div style="height:100vh">
@@ -19,12 +19,12 @@ import { filter } from 'rxjs/operators';
     <div class="open-btn"  *ngIf="!showEditor"  (click)="showEditor=true"><i nz-icon nzType="right"></i> </div>
   
 </div>
-    <div style="flex:1">
-   <router-outlet></router-outlet> 
+    <div style="flex:1" >
+   <router-outlet *ngIf="!refreshing"></router-outlet> 
     </div>
 </div>
    `,
-   styles:[
+   styles: [
      `.close-btn,.open-btn{
       height: 100vh;
       display: flex;
@@ -39,7 +39,8 @@ import { filter } from 'rxjs/operators';
    ]
 })
 export class AppComponent implements OnInit {
-  showEditor=true;
+  showEditor = true;
+  refreshing = true;
   constructor(
     el: ElementRef,
     renderer: Renderer2,
@@ -56,5 +57,12 @@ export class AppComponent implements OnInit {
       this.titleSrv.setTitle();
       this.modalSrv.closeAll();
     });
+    this.reload()
+  }
+  reload(){
+    this.refreshing = true;
+    setTimeout(() => {
+      this.refreshing = false;
+    }, 200);
   }
 }

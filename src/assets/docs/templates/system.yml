@@ -11,7 +11,8 @@ menus:
     group: true
     hideInBreadcrumb: true
     children:
-      - id: 2
+      - 
+        id: 2
         text: 角色权限
         icon: anticon anticon-dashboard
         i18n: 角色权限
@@ -22,3 +23,9 @@ menus:
             icon: anticon anticon-dashboard
             i18n: 菜单管理
             link: /pages/rbac/menu
+          -
+            id: 4
+            text: 角色管理
+            icon: anticon anticon-dashboard
+            i18n: 角色管理
+            link: /pages/rbac/role

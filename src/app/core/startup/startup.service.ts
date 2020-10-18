@@ -63,7 +63,7 @@ export class StartupService {
             // 设置页面标题的后缀
             this.titleService.default = '';
             this.titleService.suffix = res.app.name;
-            await this.initLocalDatabase(); 
+            // await this.initLocalDatabase(); 
           },
           () => {},
           () => {

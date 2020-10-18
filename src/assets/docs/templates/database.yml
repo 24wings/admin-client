@@ -1,0 +1,43 @@
+module: database
+databaseName: local
+version: 7
+tables:
+    -
+      name: menu
+      keyPath: id
+      autoIncrement: true
+      columns:
+        -
+          key: text
+          unique: false
+        - 
+          key: parentId
+          unique: false
+        - 
+          key: icon
+          unique: false
+        - 
+          key: link
+          unique: false
+        - 
+          key: code
+          unique: false
+
+    - 
+      name: role
+      keyPath: id
+      autoIncrement: true
+      columns:
+        -
+        # 角色名称
+          key: name
+          unique: true
+        # 角色代码
+        - 
+          key: code
+          unique: true
+        # 菜单
+        -
+          key: menuIds
+          unique: false
+        

@@ -21,10 +21,7 @@ export class TreeViewComponent implements AfterViewInit{
   newChildRecord;
   constructor(private treeUtilService: TreeUtilService){}
     nodes = [];
-    
-      nzEvent(event: NzFormatEmitEvent): void {
-        console.log(event);
-      }
+  
 
     async   ngAfterViewInit(){
       const  topEditor = Object.assign({}, this.config.editor);
@@ -34,26 +31,31 @@ export class TreeViewComponent implements AfterViewInit{
      }
 
      async  load(){
-       const {data} = await  this.dataManager.load({conditions: [{field: 'parentId', compare: '=', value: null, andOr: 'and'}], take: 1000, skip: 0});
+       const {data} = await  this.dataManager.load({conditions: [], take: 1000, skip: 0});
        this.data = data.items;
        this.nodes =    this.treeUtilService.list2Tree(this.data, this.config.key, this.config.parentKey, this.config.displayKey);
       }
       refresh(){
         this.load();
       }
-      selectRecord(){
-       const selectedNode = this.nzTreeSelect.getSelectedNodeList()[0];
+      selectRecord(event: NzFormatEmitEvent){
+       const selectedNode = event.node;
        if (selectedNode){
-         this.selectedRecord = selectedNode.origin;
-         this. levelEditor = Object.assign({}, this.config.editor);
-         const newLevelRecord = {};
+        this.selectedRecord = null;
+        setTimeout(() => {
+          this.selectedRecord = selectedNode.origin;  
+          this. levelEditor = Object.assign({}, this.config.editor);
+          const newLevelRecord = {};
         
-         newLevelRecord[this.config.parentKey] = this.selectedRecord[this.config.parentKey];
-         this.newLevelRecord = newLevelRecord;
-         this.childEditor = Object.assign({}, this.config.editor);
-         const newChildRecord = {};
-         newChildRecord[this.config.parentKey] = this.selectedRecord[this.config.key];
-         this.newChildRecord = newChildRecord;
+          newLevelRecord[this.config.parentKey] = this.selectedRecord[this.config.parentKey];
+          this.newLevelRecord = newLevelRecord;
+          this.childEditor = Object.assign({}, this.config.editor);
+          const newChildRecord = {};
+          newChildRecord[this.config.parentKey] = this.selectedRecord[this.config.key];
+          this.newChildRecord = newChildRecord;
+         }, 200);
+         
+        
 
         }
       }

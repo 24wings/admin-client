@@ -15,15 +15,14 @@ export class StablePageComponent {
         
     }
     ngOnInit(){
-      
-    }
-    log(){
         const module = this.codeManage.modules.find(m => m.module === this.module);
-        debugger;
         if (module){
             this.pageMeta = module.pages.find(page => page.name === this.page);
-            console.log(this.pageMeta)
+            console.log(this.pageMeta);
         }
+    }
+    log(){
+        
     }
 
 }

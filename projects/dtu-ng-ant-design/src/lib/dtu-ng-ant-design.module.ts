@@ -8,12 +8,14 @@ import { ColumnBooleanComponent } from './components/columns/column-boolean/colu
 import { ColumnDateComponent } from './components/columns/column-date/column-date.component';
 import { ColumnNumberComponent } from './components/columns/column-number/column-number.component';
 import { ColumnStringComponent } from './components/columns/column-string/column-string.component';
+import { ColumnTreeComponent } from './components/columns/column-tree/column-tree.component';
 import { DataManagerComponent } from './components/data/data-manager/data-manager.component';
 import { DynamicComponent } from './components/dynamic-component';
 import { FieldBooleanComponent } from './components/fields/field-boolean/field-boolean.component';
 import { FieldDateComponent } from './components/fields/field-date/field-date.component';
 import { FieldNumberComponent } from './components/fields/field-number/field-number.component';
 import { FieldStringComponent } from './components/fields/field-string/field-string.component';
+import { FieldTreeCheckComponent } from './components/fields/field-tree-check/field-tree-check.component';
 import { DataGridComponent } from './components/widgets/data-grid/data-grid.component';
 import { EditorComponent } from './components/widgets/editor/editor.component';
 import { MetaJsonComponent } from './components/widgets/meta-json/meta-json.component';
@@ -61,7 +63,9 @@ const COMPONENTS = [
   NgPageHeaderWrapperComponent,
   NgPageGridComponent,
   DynamicDirective,
-  CodeGenComponent
+  CodeGenComponent,
+  FieldTreeCheckComponent,
+  ColumnTreeComponent
 ];
 @NgModule({
   declarations: [...COMPONENTS],

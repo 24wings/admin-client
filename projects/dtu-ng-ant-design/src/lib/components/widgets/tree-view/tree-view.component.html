@@ -1,6 +1,8 @@
 <ng-page-header-wrapper [title]="title" [action]="action">
   <ng-template #title>
     {{ config.title }}
+
+    
   </ng-template>
 
   <ng-template #action>
@@ -15,8 +17,8 @@
     <nz-card  [nzTitle]="'树'">
 
       <div >
-        <nz-tree [nzData]="nodes" nzShowLine (nzClick)="nzEvent($event)"
-          (nzClick)="selectRecord()" #nzTreeSelect> </nz-tree>
+        <nz-tree [nzData]="nodes" nzShowLine 
+          (nzClick)="selectRecord($event)"  #nzTreeSelect> </nz-tree>
         <data-manager [config]="config.dataManager" #dataManager></data-manager>
       </div>
 
@@ -26,7 +28,7 @@
     <nz-card [nzTitle]="'详情'" [nzExtra]="extraTemplate">
       <div>
 
-        <div nz-row >
+        <div nz-row  *ngIf="selectedRecord">
           <ng-container *ngFor="let column of config.columns">
             <div class="field-label field" nz-col nzSpan="4">{{column.label}}</div>
             <div class="field-value field" nz-col nzSpan="8">
@@ -63,6 +65,6 @@
   <meta-editor [config]="childEditor" [data]="newChildRecord" *ngIf="editorMode=='insert-child'" [mode]="'insert'" (onSave)="editorMode=null;refresh()"></meta-editor>
   
 <!-- 编辑框 -->
-<meta-editor [config]="config.editor" [data]="selectRecord()" *ngIf="editorMode=='update'" [mode]="'update'" (onSave)="editorMode=null;refresh()"></meta-editor>
+<meta-editor [config]="config.editor" [data]="selectedRecord" *ngIf="editorMode=='update'" [mode]="'update'" (onSave)="editorMode=null;refresh()"></meta-editor>
   
 </ng-page-header-wrapper>
