@@ -1,0 +1,1 @@
+{"version":3,"file":"component-alias-to-name.service.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/services/component-alias-to-name.service.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,cAAc,EAAE,MAAM,oBAAoB,CAAC;;AAEpD,qBACa,2BAA2B;IACpC,sBAAsB;;;QAMpB;IACF,gBAAgB;;;QAKd;IAEF,MAAM,CAAC,cAAc,EAAE,cAAc;iCAf5B,2BAA2B;qCAA3B,2BAA2B;CA6CvC"}

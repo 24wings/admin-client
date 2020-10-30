@@ -1,0 +1,1 @@
+{"version":3,"file":"data-manager.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/decorators/widgets/data-manager.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,qCAAqC,CAAC;AAExE,eAAO,MAAM,iBAAiB,eAAyB,CAAC;AACxD,wBAAgB,WAAW,CAAC,MAAM,EAAE,iBAAiB,yBAKhD;AAEL,wBAAgB,cAAc,CAAC,MAAM,KAAA,OAEhC"}

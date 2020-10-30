@@ -1,0 +1,22 @@
+
+<nz-modal
+[nzTitle]="title"
+  [nzVisible]="visible"
+  [nzContent]="modalContent"
+  [nzClosable]="true"
+  (nzOnCancel)="visible = false; onclose.emit()"
+  (nzOnOk)="submit()"
+>
+</nz-modal>
+
+<ng-template #modalContent>
+
+  <form nz-form [formGroup]="form" *ngIf="form">
+    <ng-container *ngFor="let field of config.fields">
+      <dynamic-component [form]="form" [config]="field" [data]="data" *ngIf="!(field.isPrimaryKey && field.readonly)"></dynamic-component>
+      
+    </ng-container>
+  </form>
+
+</ng-template>
+<data-manager [config]="config.dataManager"  #dataManager ></data-manager>

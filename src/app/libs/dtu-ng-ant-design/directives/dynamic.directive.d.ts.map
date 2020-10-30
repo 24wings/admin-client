@@ -1,0 +1,1 @@
+{"version":3,"file":"dynamic.directive.d.ts","sourceRoot":"ng://dtu-ng-ant-design/","sources":["lib/directives/dynamic.directive.ts"],"names":[],"mappings":"AAAA,OAAO,EAAa,gBAAgB,EAAE,MAAM,eAAe,CAAC;;AAE5D,qBAGa,gBAAgB;IACR,gBAAgB,EAAE,gBAAgB;gBAAlC,gBAAgB,EAAE,gBAAgB;iCAD1C,gBAAgB;2CAAhB,gBAAgB;CAE5B"}

@@ -1,0 +1,27 @@
+
+<ng-container *ngIf="config">
+    <nz-tabset [nzTabPosition]="'right'">
+        <nz-tab [nzTitle]="type.name">
+            <h2>{{type.name}}.component.html</h2>
+            <button class="copy-btn" nz-button nzType="dashed" nzShape="circle" (click)="copy(html)"><i nz-icon nzType="copy"></i></button>
+            <markdown>
+                
+            {{html}}
+            </markdown>
+
+            <h2>{{type.name}}.component.ts</h2>
+            <markdown>
+            {{code}}
+            </markdown>
+        </nz-tab>
+        
+
+        <nz-tab [nzTitle]="'编辑页面'">
+            <markdown>
+            {{code}}
+            </markdown>
+        </nz-tab>
+        
+    </nz-tabset>
+
+</ng-container>

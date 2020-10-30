@@ -1,0 +1,6 @@
+{
+    "$schema": "./schema.json",
+    "modules": [
+        "/assets/config/modules/rbac/rbac.module.yml"
+    ]
+}
